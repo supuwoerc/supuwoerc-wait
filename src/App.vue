@@ -1,15 +1,14 @@
 <template>
   <div id="app">
     <el-container>
-      <el-header>Header</el-header>
-      <el-main>    
+      <el-header>
+      </el-header>
+      <el-main>
         <router-view />
       </el-main>
-      <el-footer>Footer</el-footer>
     </el-container>
   </div>
 </template>
-
 <script>
 export default {
   name: "App",
@@ -17,5 +16,7 @@ export default {
 </script>
 
 <style lang="scss">
-  
-</style>>
+@import '@/style/common/reset.scss';
+@import '@/style/common/border.scss';
+@import '@/style/common/app.scss';
+</style>

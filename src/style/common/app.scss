@@ -1,10 +1,16 @@
-/*全局的样式*/
-
 html {
-    width: 100% !important;
-    height: 100% !important;
+    width: 100%;
+    height: 100%;
     body {
-        width: 100% !important;
-        height: 100% !important;
+        width: 100%;
+        height: 100%;
+    }
+    #app {
+        width: 100%;
+        height: 100%;
+    }
+    .logo {
+        width: 120px;
+        height: 60px;
     }
 }

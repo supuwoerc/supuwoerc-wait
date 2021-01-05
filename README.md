@@ -1,6 +1,6 @@
-# vanimation
+# supuwoerc-wait
 
-> animation for vue
+> A Vue.js project
 
 ## Build Setup
 
