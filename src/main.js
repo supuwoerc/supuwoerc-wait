@@ -3,6 +3,7 @@
 import Vue from 'vue';
 import App from './App';
 import router from './router';
+import '@/style/element/element-variables.scss'; //自定义主题色element配置
 import element from '@/element/index';
 Vue.use(element); //按需加载element
 import wow from 'wowjs';

@@ -11,7 +11,8 @@ import {
     Header,
     Container,
     Footer,
-    Main
+    Main,
+    Button
 } from 'element-ui';
 const element = {
     install: function(Vue) {
@@ -27,6 +28,7 @@ const element = {
         Vue.use(Dialog)
         Vue.use(Row)
         Vue.use(Col)
+        Vue.use(Button)
     }
 }
 export default element
