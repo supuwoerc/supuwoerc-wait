@@ -12,7 +12,9 @@ import {
     Container,
     Footer,
     Main,
-    Button
+    Button,
+    ColorPicker,
+
 } from 'element-ui';
 const element = {
     install: function(Vue) {
@@ -29,6 +31,7 @@ const element = {
         Vue.use(Row)
         Vue.use(Col)
         Vue.use(Button)
+        Vue.use(ColorPicker)
     }
 }
 export default element

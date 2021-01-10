@@ -6,6 +6,20 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "128895",
+      "name": "embed2",
+      "font_class": "embed2",
+      "unicode": "e75b",
+      "unicode_decimal": 59227
+    },
+    {
+      "icon_id": "16922891",
+      "name": "B站狗头",
+      "font_class": "F8523125E92F6969F7377D0C42335F33",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
       "icon_id": "4766916",
       "name": "fund",
       "font_class": "fund",

@@ -1,22 +1,23 @@
 <template>
   <div class="home-page">
-      <el-button type="primary">主要按钮</el-button>
+ 
   </div>
 </template>
 
 <script>
-export default {
-    name:"home",
-    data:function(){
-        return {
-
-        }
+  export default {
+    name: "home",
+    data: function () {
+      return {}
     },
-    created(){},
-    mounted(){},
-    methods:{}
-};
+    created() {
+    },
+    mounted() {
+    },
+    methods: {}
+  };
 </script>
 
-<style>
+<style lang="scss">
+@import "@/style/views/home.scss";
 </style>

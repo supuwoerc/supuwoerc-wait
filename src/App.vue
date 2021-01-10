@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <el-container>
-      <el-header>123</el-header>
+      <el-header>
+        <common-header />
+      </el-header>
       <el-main>
         <keep-alive>
           <router-view v-if="$route.meta.keepAlive"></router-view>
@@ -12,8 +14,12 @@
   </div>
 </template>
 <script>
+import commonHeader from "@/components/common/commonHeader";
 export default {
   name: "App",
+  components: {
+    commonHeader,
+  },
   watch: {
     $route(newValue, oldValue) {
       if (newValue.meta && newValue.meta.pageName) {
