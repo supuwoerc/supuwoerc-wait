@@ -1,6 +1,6 @@
 <template>
     <div class="manager-page">
-
+        manager
     </div>
 </template>
 

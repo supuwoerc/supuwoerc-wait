@@ -1,0 +1,36 @@
+.not-found_page {
+    .center {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        >section {
+            &.logo {
+                margin-bottom: 20px;
+                i {
+                    font-size: 300px;
+                    //电脑样式,一般不写
+                    @media screen and(min-width: 1200px) {}
+                    //平板样式
+                    @media screen and(max-width: 1199px) {}
+                    //手机样式
+                    @media screen and(max-width: 768px) {
+                        font-size: 210px;
+                    }
+                }
+            }
+            &.tips {
+                font-size: 30px;
+                line-height: 1.2;
+                text-align: center;
+                //电脑样式,一般不写
+                @media screen and(min-width: 1200px) {}
+                //平板样式
+                @media screen and(max-width: 1199px) {}
+                //手机样式
+                @media screen and(max-width: 768px) {
+                    font-size: 22px;
+                }
+            }
+        }
+    }
+}

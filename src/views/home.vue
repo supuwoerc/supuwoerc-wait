@@ -1,21 +1,52 @@
 <template>
-  <div class="home-page">
- 
-  </div>
+<div class="home-page">
+    <div class="grid-menu">
+        <div>
+            <panel>
+                <div class="menu-item">
+
+                </div>
+            </panel>
+        </div>
+        <div>
+            <panel>
+                <div class="menu-item">
+
+                </div>
+            </panel>
+        </div>
+        <div>
+            <panel>
+                <div class="menu-item">
+
+                </div>
+            </panel>
+        </div>
+        <div>
+            <panel>
+                <div class="menu-item">
+
+                </div>
+            </panel>
+        </div>
+    </div>
+</div>
 </template>
 
 <script>
-  export default {
+import panel from "@/components/views/panel";
+export default {
     name: "home",
+    components: {
+        panel
+    },
     data: function () {
-      return {}
+        return {}
     },
-    created() {
-    },
-    mounted() {
-    },
+    created() {},
+    mounted() {},
     methods: {}
-  };
+};
 </script>
 
 <style lang="scss">

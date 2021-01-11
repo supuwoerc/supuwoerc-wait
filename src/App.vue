@@ -1,33 +1,41 @@
 <template>
-  <div id="app">
+<div id="app">
     <el-container>
-      <el-header>
-        <common-header />
-      </el-header>
-      <el-main>
-        <keep-alive>
-          <router-view v-if="$route.meta.keepAlive"></router-view>
-        </keep-alive>
-        <router-view v-if="!$route.meta.keepAlive"></router-view>
-      </el-main>
+        <el-header>
+            <common-header />
+        </el-header>
+        <el-main>
+            <keep-alive>
+                <router-view v-if="$route.meta.keepAlive"></router-view>
+            </keep-alive>
+            <router-view v-if="!$route.meta.keepAlive"></router-view>
+            <button-menu />
+        </el-main>
     </el-container>
-  </div>
+</div>
 </template>
+
 <script>
 import commonHeader from "@/components/common/commonHeader";
+import buttonMenu from "@/components/common/buttonMenu";
 export default {
-  name: "App",
-  components: {
-    commonHeader,
-  },
-  watch: {
-    $route(newValue, oldValue) {
-      if (newValue.meta && newValue.meta.pageName) {
-        document.title = newValue.meta.pageName;
-      }
+    name: "App",
+    components: {
+        commonHeader,
+        buttonMenu
     },
-  },
-  methods: {},
+    watch: {
+        $route(newValue, oldValue) {
+            if (newValue.meta && newValue.meta.pageName) {
+                document.title = newValue.meta.pageName;
+            }
+        },
+    },
+    mounted() {
+    },
+    methods: {
+       
+    },
 };
 </script>
 

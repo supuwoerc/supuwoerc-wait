@@ -4,7 +4,7 @@
 
 <script>
 const version = require("element-ui/package.json").version;
-const ORIGINAL_THEME = "#409EFF"; // 
+const ORIGINAL_THEME = "#409EFF"; //
 export default {
     name: "themeColorSelecotr",
     props: {
@@ -32,7 +32,7 @@ export default {
          * 开启深度监听，防止第一次监听不到
          */
         theme: {
-           handler:async function (val, oldValue) {
+            handler: async function (val, oldValue) {
                 const oldVal = this.chalk ? this.theme : ORIGINAL_THEME;
                 if (typeof val !== "string") return;
                 const themeCluster = this.getThemeCluster(val.replace("#", ""));
@@ -46,7 +46,8 @@ export default {
                     .filter((style) => {
                         const text = style.innerText;
                         return (
-                            new RegExp(oldVal, "i").test(text) && !/Chalk Variables/.test(text)
+                            new RegExp(oldVal, "i").test(text) &&
+                            !/Chalk Variables/.test(text)
                         );
                     });
                 styles.forEach((style) => {
@@ -64,7 +65,7 @@ export default {
                 this.$emit("color-update", val);
             },
             immediate: true,
-        }
+        },
     },
     methods: {
         // 修改element-ui主题样式表颜色
@@ -95,16 +96,19 @@ export default {
         },
         // 获取element-ui主题样式
         getCSSString() {
-            const url = `https://unpkg.com/element-ui@${version}/lib/theme-chalk/index.css`;
+            //此链接为element在线css地址，因为不考虑升级element，并且为了避免网络等影响，下载到了本地static目录。
+            // const url = `https://unpkg.com/element-ui@${version}/lib/theme-chalk/index.css`;
+            const url = `../../../static/element/index.css`;
             return new Promise((resolve) => {
                 const xhr = new XMLHttpRequest();
                 xhr.onreadystatechange = () => {
                     if (xhr.readyState === 4 && xhr.status === 200) {
+                        //请求成功的情况
                         this.chalk = xhr.responseText.replace(/@font-face{[^}]+}/, "");
                         resolve();
                     }
                 };
-                xhr.open("GET", url);
+                xhr.open("GET", url, true);
                 xhr.send();
             });
         },

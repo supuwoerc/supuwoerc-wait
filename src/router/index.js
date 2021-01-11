@@ -3,6 +3,7 @@ import Router from 'vue-router'
 Vue.use(Router)
 const home = () => { return import ("@/views/home") };
 const manager = () => { return import ("@/views/manager") };
+const notFound = () => { return import ("@/views/notFound") };
 export default new Router({
     routes: [{
         path: '/',
@@ -19,6 +20,13 @@ export default new Router({
         meta: {
             pageName: "管理",
             keepAlive: true
+        }
+    }, {
+        path: "*",
+        component: notFound,
+        meta: {
+            pageName: "404",
+            keepAlive: false
         }
     }]
 })

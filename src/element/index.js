@@ -14,7 +14,13 @@ import {
     Main,
     Button,
     ColorPicker,
-
+    Menu,
+    Dropdown,
+    DropdownMenu,
+    DropdownItem,
+    Submenu,
+    MenuItem,
+    MenuItemGroup,
 } from 'element-ui';
 const element = {
     install: function(Vue) {
@@ -32,6 +38,13 @@ const element = {
         Vue.use(Col)
         Vue.use(Button)
         Vue.use(ColorPicker)
+        Vue.use(Menu)
+        Vue.use(Dropdown)
+        Vue.use(DropdownMenu)
+        Vue.use(DropdownItem)
+        Vue.use(Submenu)
+        Vue.use(MenuItem)
+        Vue.use(MenuItemGroup)
     }
 }
 export default element
