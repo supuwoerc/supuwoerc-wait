@@ -32,7 +32,7 @@ export default {
         },
     },
     mounted() {
-        new this.$wow.WOW().init();
+         
     },
     methods: {},
 };
@@ -42,6 +42,7 @@ export default {
 [v-cloak] {
     display: none !important;
 }
+
 @import "@/style/common/reset.scss";
 @import "@/style/common/border.scss";
 @import "@/style/common/app.scss";

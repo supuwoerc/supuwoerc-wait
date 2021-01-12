@@ -1,5 +1,5 @@
 import axios from 'axios'
-axios.defaults.baseURL = "http://192.168.1.31:8088/"
+axios.defaults.baseURL = process.env.API;
 axios.defaults.timeout = 1000000;
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 axios.defaults.headers.put['Content-Type'] = 'application/json';

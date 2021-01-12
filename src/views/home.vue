@@ -22,7 +22,7 @@
             </panel>
         </div>
     </div>
-    <div>
+    <div class="wow animate__bounceInRight" data-wow-duration="1s">
         <markdown :data="markdown" />
     </div>
 </div>
@@ -52,11 +52,12 @@ export default {
         initWow() {
             new this.$wow.WOW({
                 scrollContainer: ".home-page",
-                live:true
+                live: true,
+                mobile: true
             }).init();
         },
         getMarkdownData() {
-          markdown({}).then((res) => {
+            markdown({}).then((res) => {
                 this.markdown = res;
             })
         },

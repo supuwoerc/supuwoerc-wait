@@ -11,7 +11,7 @@ export default new Router({
         component: home,
         meta: {
             pageName: "首页",
-            keepAlive: true
+            keepAlive: false
         }
     }, {
         path: '/manager',

@@ -15,6 +15,9 @@ html {
         .el-main {
             background: rgba(234, 238, 244, 1);
             padding: 10px;
+            overflow: hidden;
+            width: 100%;
+            height: calc(100% - 60px);
         }
         .el-container {
             width: 100%;

@@ -6,7 +6,7 @@
             class="float_info"
             :style="{'width': itemWidth + 'px', 'height': itemHeight + 'px', 'left': left + 'px', 'top': top + 'px','background':$store.getters.getThemeColor}"
         >
-            <i class="iconfont icon-dropbox"/>
+            <i class="iconfont icon-compass"/>
         </div>
         <treeMenu ref="treeMenu"/>
     </div>
