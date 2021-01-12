@@ -7,8 +7,8 @@
     </div>
     <div class="right">
         <div class="navbar">
-            <el-menu :default-active="navActiveIndex" :router="true" class="el-menu-demo" mode="horizontal" @select="handleSelect" background-color="#ffffff" text-color="#333333" :active-text-color="$store.getters.getThemeColor">
-                <template v-for="(item,index) in navigation">
+            <el-menu :default-active="navActiveIndex" :router="true" class="el-menu-demo" mode="horizontal" background-color="#ffffff" text-color="#333333" :active-text-color="$store.getters.getThemeColor">
+                <template v-for="(item,index) in $store.getters.getNavigation">
                     <el-menu-item v-if="item&&item.children&&item.children.length==0" :index="item.router">{{item.name}}</el-menu-item>
                     <el-submenu :index="item.router" v-else>
                         <template slot="title">{{item.name}}</template>
@@ -31,31 +31,7 @@ export default {
     },
     data: function () {
         return {
-            navigation: [{
-                name: "首页",
-                router: "/",
-                children: []
-            }, {
-                name: "我的工作台",
-                router: "",
-                children: [{
-                    name: "选项1",
-                    router: "",
-                    children: []
-                }, {
-                    name: "选项2",
-                    router: "",
-                    children: []
-                }, {
-                    name: "选项3",
-                    router: "",
-                    children: []
-                }]
-            }, {
-                name: "节点",
-                router: "/manager1",
-                children: []
-            }]
+            
         };
     },
     computed:{
@@ -75,12 +51,6 @@ export default {
                 type: "success",
                 offset: 60
             });
-        },
-        /**
-         * 导航点击事件
-         */
-        handleSelect(key, keyPath) {
-            console.log(key, keyPath);
         }
     },
 };

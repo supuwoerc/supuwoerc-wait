@@ -8,10 +8,14 @@
         >
             <i class="iconfont icon-dropbox"/>
         </div>
+        <treeMenu ref="treeMenu"/>
     </div>
 </template>
 <script>
+import treeMenu from "./treeMenu";
 export default {
+    name:"buttonMenu",
+    components:{treeMenu},
     data() {
         return {
             clientWidth: 0,
@@ -48,6 +52,7 @@ export default {
     },
     methods: {
         onBtnClicked(){
+            this.$refs.treeMenu.showTreeMenu();
             this.$emit("onFloatBtnClicked")
         },
         handleScrollStart() {
@@ -109,5 +114,5 @@ export default {
 }
 </script>
 <style lang="scss">
-@import "@/style/common/buttonMenu.scss";
+@import "@/style/components/common/buttonMenu.scss";
 </style>

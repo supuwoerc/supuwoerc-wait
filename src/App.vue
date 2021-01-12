@@ -5,7 +5,7 @@
             <common-header />
         </el-header>
         <el-main>
-            <keep-alive>
+            <keep-alive key="keep-alive">
                 <router-view v-if="$route.meta.keepAlive"></router-view>
             </keep-alive>
             <router-view v-if="!$route.meta.keepAlive"></router-view>
@@ -32,10 +32,9 @@ export default {
         },
     },
     mounted() {
+        new this.$wow.WOW().init();
     },
-    methods: {
-       
-    },
+    methods: {},
 };
 </script>
 

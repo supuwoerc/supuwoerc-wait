@@ -21,6 +21,7 @@ import {
     Submenu,
     MenuItem,
     MenuItemGroup,
+    Drawer
 } from 'element-ui';
 const element = {
     install: function(Vue) {
@@ -45,6 +46,7 @@ const element = {
         Vue.use(Submenu)
         Vue.use(MenuItem)
         Vue.use(MenuItemGroup)
+        Vue.use(Drawer)
     }
 }
 export default element
