@@ -11,6 +11,20 @@ import wow from 'wowjs';
 import 'animate.css';
 import store from '@/store/store'; //注入vuex
 Vue.prototype.$wow = wow; //全局注入wow
+//markdown代码高亮
+import highlight from 'highlight';
+Vue.use(highlight);
+//注册自定义指令
+import directives from "@/directive/directives";
+directives(Vue);
+//注册全局组件
+import global from "@/global/global";
+global(Vue);
+//控制台
+import VConsole from 'vconsole'
+if (process.env.NODE_ENV === 'development') {
+    new VConsole();
+}
 /**
  * 注入element相关全局组件
  */

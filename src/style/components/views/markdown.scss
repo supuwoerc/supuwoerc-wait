@@ -1,0 +1,13 @@
+.markdown-file-show-container-parent {
+    width: 100%;
+    min-height: 100px;
+    box-sizing: border-box;
+    padding: 6px;
+    .markdown-file-show-container {
+        background: #FFFFFF;
+        border-radius: 10px;
+        box-sizing: border-box;
+        padding: 20px;
+        box-shadow: 0 2px 4px rgba(10, 16, 20, 0.24), 0 0 4px rgba(10, 16, 20, 0.12);
+    }
+}

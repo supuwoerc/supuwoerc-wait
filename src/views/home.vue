@@ -1,45 +1,66 @@
 <template>
-  <div class="home-page">
+<div class="home-page">
     <div class="grid-menu">
-      <div class="wow animate__zoomIn" data-wow-duration="1s">
-        <panel>
-          <div class="menu-item"></div>
-        </panel>
-      </div>
-      <div class="wow animate__zoomIn" data-wow-duration="1s">
-        <panel>
-          <div class="menu-item"></div>
-        </panel>
-      </div>
-      <div class="wow animate__zoomIn" data-wow-duration="1s">
-        <panel>
-          <div class="menu-item"></div>
-        </panel>
-      </div>
-      <div class="wow animate__zoomIn" data-wow-duration="1s">
-        <panel>
-          <div class="menu-item"></div>
-        </panel>
-      </div>
+        <div class="wow animate__zoomIn" data-wow-duration="1s">
+            <panel>
+                <div class="menu-item"></div>
+            </panel>
+        </div>
+        <div class="wow animate__zoomIn" data-wow-duration="1s">
+            <panel>
+                <div class="menu-item"></div>
+            </panel>
+        </div>
+        <div class="wow animate__zoomIn" data-wow-duration="1s">
+            <panel>
+                <div class="menu-item"></div>
+            </panel>
+        </div>
+        <div class="wow animate__zoomIn" data-wow-duration="1s">
+            <panel>
+                <div class="menu-item"></div>
+            </panel>
+        </div>
     </div>
-  </div>
+    <div>
+        <markdown :data="markdown" />
+    </div>
+</div>
 </template>
 
 <script>
 import panel from "@/components/views/panel";
+import {
+    markdown
+} from "@/api/api";
 export default {
-  name: "home",
-  components: {
-    panel,
-  },
-  data: function () {
-    return {};
-  },
-  created() {},
-  mounted() {
-    new this.$wow.WOW({scrollContainer: '.home-page'}).init();
-  },
-  methods: {},
+    name: "home",
+    components: {
+        panel,
+    },
+    data: function () {
+        return {
+            markdown: ""
+        };
+    },
+    created() {},
+    mounted() {
+        this.initWow();
+        this.getMarkdownData();
+    },
+    methods: {
+        initWow() {
+            new this.$wow.WOW({
+                scrollContainer: ".home-page",
+                live:true
+            }).init();
+        },
+        getMarkdownData() {
+          markdown({}).then((res) => {
+                this.markdown = res;
+            })
+        },
+    },
 };
 </script>
 

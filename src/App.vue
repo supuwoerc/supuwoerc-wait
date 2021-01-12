@@ -1,5 +1,5 @@
 <template>
-<div id="app">
+<div id="app" v-cloak>
     <el-container>
         <el-header>
             <common-header />
@@ -39,6 +39,9 @@ export default {
 </script>
 
 <style lang="scss">
+[v-cloak] {
+    display: none !important;
+}
 @import "@/style/common/reset.scss";
 @import "@/style/common/border.scss";
 @import "@/style/common/app.scss";
