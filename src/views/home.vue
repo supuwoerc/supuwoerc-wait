@@ -22,7 +22,7 @@
             </panel>
         </div>
     </div>
-    <div class="wow animate__bounceInRight" data-wow-duration="1s">
+    <div class="wow animate__slideInRight" data-wow-duration="1s">
         <markdown :data="markdown" />
     </div>
 </div>

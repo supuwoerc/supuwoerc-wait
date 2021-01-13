@@ -1,8 +1,9 @@
 <template>
 <div class="common-header-container">
     <div class="left">
-        <div>
-            <img src="../../assets/images/app.png">
+        <div @click="switchMode()">
+            <i class="iconfont icon-boke1" style="color:#ffffff;"></i>
+            <span>散夜</span>
         </div>
     </div>
     <div class="right">
@@ -19,6 +20,14 @@
         </div>
         <theme-color-selector :color="this.$store.getters.getThemeColor" @color-update="colorChange" />
     </div>
+    <!-- 主题切换弹窗 -->
+    <el-dialog title="提示" :visible.sync="dialogVisible" :width="dialogWidth" :custom-class="'theme-dialog'">
+        <span class="tips">{{modeText}}</span>
+        <span slot="footer" class="dialog-footer">
+            <el-button @click="dialogVisible = false">取消</el-button>
+            <el-button type="primary" @click="switchTheme()">确定</el-button>
+        </span>
+    </el-dialog>
 </div>
 </template>
 
@@ -31,12 +40,16 @@ export default {
     },
     data: function () {
         return {
-            
+            dialogVisible: false,
+            dialogWidth: "80%" //移动端的宽度   打开会判断分辨率修改
         };
     },
-    computed:{
-        navActiveIndex:function(){
+    computed: {
+        navActiveIndex: function () {
             return this.$route.path; //nav默认激活
+        },
+        modeText:function(){
+            return this.$store.getters.getThemeMode=='light'?'切换到暗黑模式?':'切换到正常模式?';
         }
     },
     methods: {
@@ -51,6 +64,21 @@ export default {
                 type: "success",
                 offset: 60
             });
+        },
+        switchMode() {
+            let cliwidth = document.body.clientWidth;
+            if (cliwidth > 1200) {
+                this.dialogWidth = "300px"
+            }
+            this.dialogVisible = true;
+        },
+        switchTheme() {
+            this.dialogVisible = false;
+            if (this.$store.getters.getThemeMode == 'light') {
+                this.$store.commit("setThemeMode", "dark");
+            } else {
+                this.$store.commit("setThemeMode", "light");
+            }
         }
     },
 };

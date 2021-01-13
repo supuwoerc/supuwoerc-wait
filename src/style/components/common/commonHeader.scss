@@ -23,14 +23,36 @@
                     height: 50px;
                     margin-right: 10px;
                 }
+                i {
+                    font-size: 40px;
+                }
+                span {
+                    margin-left: 6px;
+                    color: #ffffff;
+                    font-size: 26px;
+                    font-family: "zk", "Microsoft YaHei", "微软雅黑", "sans-serif";
+                }
             }
         }
         &.right {
-            flex: 2;
+            flex: 1;
             display: flex;
             align-items: center;
             justify-content: flex-end;
             >div.navbar {
+                margin-right: 10px;
+                .el-menu {
+                    background-color: rgba(0, 0, 0, 0) !important;
+                    >li {
+                        background-color: transparent !important;
+                    }
+                    .el-submenu__title {
+                        background-color: transparent !important;
+                    }
+                }
+                .el-menu.el-menu--horizontal {
+                    border-bottom: solid 1px transparent;
+                }
                 //电脑样式,一般不写
                 @media screen and(min-width: 1200px) {}
                 //平板样式
@@ -40,6 +62,12 @@
                     display: none;
                 }
             }
+        }
+    }
+    .theme-dialog {
+        border-radius: 10px;
+        .tips {
+            font-size: 16px;
         }
     }
 }

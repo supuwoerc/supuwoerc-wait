@@ -6,7 +6,8 @@ export default new Vuex.Store({
      * 所有的数据都放在state中
      */
     state: {
-        themeColor: localStorage.getItem('themeColor') || "#409EFF",
+        themeColor: localStorage.getItem('themeColor') || "#409EFF", //element主题
+        themeMode: localStorage.getItem('themeMode') || "light", //暗黑模式
         navigation: [{
             name: "首页",
             router: "/",
@@ -45,6 +46,10 @@ export default new Vuex.Store({
             }]
         }, {
             name: "节点",
+            router: "/classify",
+            children: []
+        }, {
+            name: "管理",
             router: "/manager",
             children: []
         }],
@@ -56,6 +61,17 @@ export default new Vuex.Store({
         setThemeColor(state, payload) {
             localStorage.setItem("themeColor", payload);
             state.themeColor = payload;
+        },
+        setThemeMode(state, payload) {
+            state.themeMode = payload;
+            localStorage.setItem("themeMode", payload);
+            if (payload == "light") {
+                document.querySelector('body').classList.remove("dark");
+                document.querySelector('body').classList.add("light");
+            } else {
+                document.querySelector('body').classList.remove("light");
+                document.querySelector('body').classList.add("dark");
+            }
         }
     },
     /**
@@ -68,6 +84,9 @@ export default new Vuex.Store({
         },
         getNavigation: state => {
             return state.navigation;
+        },
+        getThemeMode: state => {
+            return state.themeMode;
         }
     }
 })

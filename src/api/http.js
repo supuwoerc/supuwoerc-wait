@@ -8,7 +8,6 @@ axios.interceptors.request.use(
     config => {
         // 每次发送请求之前判断是否存在token，如果存在，则统一在http请求的header都加上token，不用每次请求都手动添加了
         const token = sessionStorage.getItem("supuwoerc_token")
-        console.log(token)
         if (token) {
             config.headers.Authorization = 'JWT ' + token
         }
@@ -49,7 +48,6 @@ export function axios_get(url, params) {
         (resolve, reject) => {
             axios.get(url, { params: params })
                 .then(res => {
-                    console.log("封装信息的的res", res)
                     resolve(res.data)
                 }).catch(err => {
                     reject(err.data)
@@ -64,7 +62,6 @@ export function axios_post(url, data) {
             console.log(data)
             axios.post(url, JSON.stringify(data))
                 .then(res => {
-                    console.log("封装信息的的res", res)
                     resolve(res.data)
                 }).catch(err => {
                     reject(err.data)
@@ -79,7 +76,6 @@ export function axios_put(url, data) {
             console.log(data)
             axios.put(url, JSON.stringify(data))
                 .then(res => {
-                    console.log("封装信息的的res", res)
                     resolve(res.data)
                 }).catch(err => {
                     reject(err.data)
@@ -94,7 +90,6 @@ export function axios_delete(url, data) {
             console.log(data)
             axios.delete(url, { params: data })
                 .then(res => {
-                    console.log("封装信息的的res", res)
                     resolve(res.data)
                 }).catch(err => {
                     reject(err.data)

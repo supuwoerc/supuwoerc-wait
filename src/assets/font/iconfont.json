@@ -6,6 +6,20 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "9166174",
+      "name": "博客",
+      "font_class": "boke1",
+      "unicode": "e9d6",
+      "unicode_decimal": 59862
+    },
+    {
+      "icon_id": "7321368",
+      "name": "博客",
+      "font_class": "boke",
+      "unicode": "e9d5",
+      "unicode_decimal": 59861
+    },
+    {
       "icon_id": "5397073",
       "name": "404",
       "font_class": "icon-test1",

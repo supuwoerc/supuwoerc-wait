@@ -32,9 +32,14 @@ export default {
         },
     },
     mounted() {
-         
+        this.initThemeMode();
     },
-    methods: {},
+    methods: {
+        //初始化页面模式
+        initThemeMode() {
+            this.$store.commit("setThemeMode", this.$store.getters.getThemeMode);
+        }
+    },
 };
 </script>
 
