@@ -23,14 +23,14 @@ const router = new Router({
                 pageName: "管理",
                 keepAlive: true
             },
-            children: [{
-                path: "/newarticle",
-                component: newArticle,
-                meta: {
-                    pageName: "新建",
-                    keepAlive: true
-                }
-            }]
+            children: []
+        }, {
+            path: "/newarticle",
+            component: newArticle,
+            meta: {
+                pageName: "新建",
+                keepAlive: true
+            }
         }, {
             path: "*",
             component: notFound,
@@ -44,7 +44,6 @@ const router = new Router({
      * 添加全局的路由守卫
      */
 router.beforeEach((to, from, next) => {
-    console.log(to)
     next();
 })
 export default router;

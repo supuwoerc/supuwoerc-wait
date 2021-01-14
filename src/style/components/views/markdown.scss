@@ -1,13 +1,16 @@
+@import "../../theme/themes";
+@import "../../theme/mixin";
 .markdown-file-show-container-parent {
     width: 100%;
     min-height: 100px;
     box-sizing: border-box;
     padding: 6px;
     .markdown-file-show-container {
-        background: #FFFFFF;
+        @include background_color(blockColor);
         border-radius: 10px;
         box-sizing: border-box;
         padding: 20px;
-        box-shadow: 0 2px 4px rgba(10, 16, 20, 0.24), 0 0 4px rgba(10, 16, 20, 0.12);
+        @include box_shadow( 0, 2, 4, 0, shadowColor);
+        @include font_color(whiteColor);
     }
 }

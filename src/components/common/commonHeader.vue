@@ -41,6 +41,7 @@ export default {
     data: function () {
         return {
             dialogVisible: false,
+            visible: true,
             dialogWidth: "80%" //移动端的宽度   打开会判断分辨率修改
         };
     },
@@ -48,8 +49,8 @@ export default {
         navActiveIndex: function () {
             return this.$route.path; //nav默认激活
         },
-        modeText:function(){
-            return this.$store.getters.getThemeMode=='light'?'切换到暗黑模式?':'切换到正常模式?';
+        modeText: function () {
+            return this.$store.getters.getThemeMode == 'light' ? '切换到暗黑模式?' : '切换到正常模式?';
         }
     },
     methods: {

@@ -16,13 +16,11 @@
 </template>
 
 <script>
-import commonHeader from "@/components/common/commonHeader";
-import buttonMenu from "@/components/common/buttonMenu";
 export default {
     name: "App",
     components: {
-        commonHeader,
-        buttonMenu
+        commonHeader:()=> import("@/components/common/commonHeader"),
+        buttonMenu:()=> import("@/components/common/buttonMenu")
     },
     watch: {
         $route(newValue, oldValue) {

@@ -21,7 +21,9 @@ import {
     Submenu,
     MenuItem,
     MenuItemGroup,
-    Drawer
+    Drawer,
+    Tooltip,
+    Popover
 } from 'element-ui';
 const element = {
     install: function(Vue) {
@@ -47,6 +49,8 @@ const element = {
         Vue.use(MenuItem)
         Vue.use(MenuItemGroup)
         Vue.use(Drawer)
+        Vue.use(Tooltip)
+        Vue.use(Popover)
     }
 }
 export default element

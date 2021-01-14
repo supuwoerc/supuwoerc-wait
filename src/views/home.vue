@@ -29,18 +29,18 @@
 </template>
 
 <script>
-import panel from "@/components/views/panel";
 import {
     markdown
 } from "@/api/api";
 export default {
     name: "home",
     components: {
-        panel,
+        panel:()=>import("@/components/views/panel")
     },
     data: function () {
         return {
-            markdown: ""
+            markdown: "",
+            wow: null
         };
     },
     created() {},
@@ -50,7 +50,7 @@ export default {
     },
     methods: {
         initWow() {
-            new this.$wow.WOW({
+            this.wow = new this.$wow.WOW({
                 scrollContainer: ".home-page",
                 live: true,
                 mobile: true

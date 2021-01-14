@@ -1,15 +1,14 @@
 <template>
 <div class="new-article">
-    <markdown-editor />
+    <markdownEditor />
 </div>
 </template>
 
 <script>
-import markdownEditor from "@/components/views/markdownEditor";
 export default {
     name: "newArticle",
     components: {
-        markdownEditor
+        markdownEditor:()=>import("@/components/views/markdownEditor")
     },
     data: function () {
         return {

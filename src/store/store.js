@@ -48,10 +48,6 @@ export default new Vuex.Store({
             name: "节点",
             router: "/classify",
             children: []
-        }, {
-            name: "管理",
-            router: "/manager",
-            children: []
         }],
     },
     /**
@@ -67,10 +63,12 @@ export default new Vuex.Store({
             localStorage.setItem("themeMode", payload);
             if (payload == "light") {
                 document.querySelector('body').classList.remove("dark");
-                document.querySelector('body').classList.add("light");
+                document.querySelector('body').classList.add("light"); //背景图
+                window.document.documentElement.setAttribute("data-theme", "light"); //主题色
             } else {
                 document.querySelector('body').classList.remove("light");
                 document.querySelector('body').classList.add("dark");
+                window.document.documentElement.setAttribute("data-theme", "dark");
             }
         }
     },
