@@ -5,6 +5,7 @@
 <script>
 const version = require("element-ui/package.json").version;
 const ORIGINAL_THEME = "#409EFF"; //
+import {getDataWithURL} from "@/api/api";
 export default {
     name: "themeColorSelecotr",
     props: {
@@ -98,19 +99,10 @@ export default {
         getCSSString() {
             //此链接为element在线css地址，因为不考虑升级element，并且为了避免网络等影响，下载到了本地static目录。
             // const url = `https://unpkg.com/element-ui@${version}/lib/theme-chalk/index.css`;
-            const url = `../../../static/element/index.css`;
-            return new Promise((resolve) => {
-                const xhr = new XMLHttpRequest();
-                xhr.onreadystatechange = () => {
-                    if (xhr.readyState === 4 && xhr.status === 200) {
-                        //请求成功的情况
-                        this.chalk = xhr.responseText.replace(/@font-face{[^}]+}/, "");
-                        resolve();
-                    }
-                };
-                xhr.open("GET", url, true);
-                xhr.send();
-            });
+            const url = `static/element/index.css`;
+            getDataWithURL(url,{}).then((res)=>{
+                this.chalk = res.replace(/@font-face{[^}]+}/, "");
+            })
         },
         getThemeCluster(theme) {
             const tintColor = (color, tint) => {
