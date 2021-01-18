@@ -43,7 +43,9 @@ export default {
             wow: null
         };
     },
-    created() {},
+    created() {
+        console.log("123")
+    },
     mounted() {
         this.initWow();
         this.getMarkdownData();
