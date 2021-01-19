@@ -11,9 +11,6 @@
             <router-view v-if="!$route.meta.keepAlive"></router-view>
             <button-menu />
         </el-main>
-        <a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" class="upyun-logo" :style="{color:$store.getters.getThemeMode=='light'?'#333':'#fff'}">
-            <span>本网站由</span><img src="../static/upyun/upyun.png" alt="" srcset=""><span>提供CND加速/云存储服务</span>
-        </a>
     </el-container>
 </div>
 </template>

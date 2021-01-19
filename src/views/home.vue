@@ -44,7 +44,6 @@ export default {
         };
     },
     created() {
-        console.log("123")
     },
     mounted() {
         this.initWow();
