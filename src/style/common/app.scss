@@ -10,6 +10,7 @@ html {
         background: url("./assets/images/random.jpeg") no-repeat;
         background-size: cover;
         background-position: center center;
+        position: relative;
         &.dark {
             background: url("./assets/images/random2.jpeg") no-repeat;
             background-size: cover;
@@ -32,6 +33,21 @@ html {
         .el-container {
             width: 100%;
             height: 100%;
+        }
+        .upyun-logo {
+            position: absolute;
+            left: 50%;
+            bottom: 12px;
+            transform: translateX(-50%);
+            text-decoration: none !important;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            img {
+                width: 60px;
+                border-radius: 4px;
+                margin: 0 6px;
+            }
         }
     }
 }
