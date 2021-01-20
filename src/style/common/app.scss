@@ -7,12 +7,12 @@ html {
         width: 100%;
         height: 100%;
         overflow: hidden;
-        background: url("./assets/images/random.jpeg") no-repeat;
+        background: url("https://cdn.jsdelivr.net/gh/supuwoerc/jsdelivr-cdn/assets/images/random.jpeg") no-repeat;
         background-size: cover;
         background-position: center center;
         position: relative;
         &.dark {
-            background: url("./assets/images/random2.jpeg") no-repeat;
+            background: url("https://cdn.jsdelivr.net/gh/supuwoerc/jsdelivr-cdn/assets/images/random2.jpeg") no-repeat;
             background-size: cover;
             background-position: center center;
         }
@@ -39,7 +39,8 @@ html {
 
 @font-face {
     font-family: 'zk'; //重命名字体名
-    src: url('./assets/ttf/zkklt.ttf'); //引入字体
+    // src: url('./assets/ttf/zkklt.ttf'); //引入字体
+    src: url('https://cdn.jsdelivr.net/gh/supuwoerc/jsdelivr-cdn/assets/ttf/zkklt.ttf'); //引入自己创建的CDN仓库字体
     font-weight: normal;
     font-style: normal;
 }

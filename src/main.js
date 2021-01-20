@@ -3,7 +3,7 @@
 import Vue from 'vue';
 import App from './App';
 import router from './router';
-import '@/assets/font/iconfont.css'; //阿里字体图标
+//import '@/assets/font/iconfont.css'; //阿里字体图标  替换为阿里CDN在下字体  加加速
 import '@/style/element/element-variables.scss'; //自定义主题色element配置
 import element from '@/element/index';
 Vue.use(element); //按需加载element非全局组件
