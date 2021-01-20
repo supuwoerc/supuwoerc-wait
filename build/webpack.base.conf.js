@@ -3,18 +3,24 @@ const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
+const vConsolePlugin = require('vconsole-webpack-plugin')
 
 function resolve(dir) {
     return path.join(__dirname, '..', dir)
 }
-
-
 
 module.exports = {
     context: path.resolve(__dirname, '../'),
     entry: {
         app: './src/main.js'
     },
+    plugins: [
+        //非生产环境开启调试
+        new vConsolePlugin({
+            filter: [],
+            enable: process.env.NODE_ENV != 'production'
+        })
+    ],
     output: {
         path: config.build.assetsRoot,
         filename: '[name].js',

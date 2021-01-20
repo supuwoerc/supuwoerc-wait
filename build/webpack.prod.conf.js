@@ -10,7 +10,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-
 const env = require('../config/prod.env')
 
 const webpackConfig = merge(baseWebpackConfig, {
@@ -27,6 +26,7 @@ const webpackConfig = merge(baseWebpackConfig, {
         filename: utils.assetsPath('js/[name].[chunkhash].js'),
         chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
     },
+    externals: config.externals, //排除打包的第三方依赖  应该在webpack.base.conf.js定义   这里会覆盖重写其实
     plugins: [
         // http://vuejs.github.io/vue-loader/en/workflow/production.html
         new webpack.DefinePlugin({
@@ -75,6 +75,7 @@ const webpackConfig = merge(baseWebpackConfig, {
             // necessary to consistently work with multiple chunks via CommonsChunkPlugin
             chunksSortMode: 'dependency'
         }),
+
         // keep module.id stable when vendor modules does not change
         new webpack.HashedModuleIdsPlugin(),
         // enable scope hoisting
@@ -140,5 +141,13 @@ if (config.build.bundleAnalyzerReport) {
     const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
     webpackConfig.plugins.push(new BundleAnalyzerPlugin())
 }
+//打包时引入CDN资源来降低打包成果的大小
+if (config.build.buildWithCDN) {
+    const InjectCDN = require("./buildWithCdn");
+    webpackConfig.plugins.push(new InjectCDN({
+        js: config.buildResources.js,
+        css: config.buildResources.css
+    }))
 
+}
 module.exports = webpackConfig

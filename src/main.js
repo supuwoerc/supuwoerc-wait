@@ -3,7 +3,7 @@
 import Vue from 'vue';
 import App from './App';
 import router from './router';
-//import '@/assets/font/iconfont.css'; //阿里字体图标  替换为阿里CDN在下字体  加加速
+import '@/assets/font/iconfont.css'; //阿里字体图标  
 import '@/style/element/element-variables.scss'; //自定义主题色element配置
 import element from '@/element/index';
 Vue.use(element); //按需加载element非全局组件
@@ -20,11 +20,6 @@ directives(Vue);
 //注册全局组件
 import global from "@/global/global";
 global(Vue);
-//控制台
-import VConsole from 'vconsole'
-if (process.env.NODE_ENV === 'development') {
-    new VConsole();
-}
 /**
  * 注入element相关全局组件
  */
