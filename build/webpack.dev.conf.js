@@ -7,7 +7,6 @@ const path = require('path')
 const baseWebpackConfig = require('./webpack.base.conf')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const InjectCDN = require('./buildWithCdn').InjectCDN;
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
 
@@ -80,7 +79,7 @@ module.exports = new Promise((resolve, reject) => {
             // Add FriendlyErrorsPlugin
             devWebpackConfig.plugins.push(new FriendlyErrorsPlugin({
                 compilationSuccessInfo: {
-                    messages: [`Your application is running here: http://${devWebpackConfig.devServer.host}:${port}`],
+                    messages: [`程序运行地址: http://${devWebpackConfig.devServer.host}:${port}`],
                 },
                 onErrors: config.dev.notifyOnErrors ?
                     utils.createNotifierCallback() : undefined

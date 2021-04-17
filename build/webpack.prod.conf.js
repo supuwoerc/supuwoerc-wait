@@ -141,13 +141,4 @@ if (config.build.bundleAnalyzerReport) {
     const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
     webpackConfig.plugins.push(new BundleAnalyzerPlugin())
 }
-//打包时引入CDN资源来降低打包成果的大小
-if (config.build.buildWithCDN) {
-    const InjectCDN = require("./buildWithCdn");
-    webpackConfig.plugins.push(new InjectCDN({
-        js: config.buildResources.js,
-        css: config.buildResources.css
-    }))
-
-}
 module.exports = webpackConfig
