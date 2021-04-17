@@ -23,7 +23,8 @@ import {
     MenuItemGroup,
     Drawer,
     Tooltip,
-    Popover
+    Popover,
+    Upload
 } from 'element-ui';
 const element = {
     install: function(Vue) {
@@ -41,6 +42,7 @@ const element = {
         Vue.use(Col)
         Vue.use(Button)
         Vue.use(ColorPicker)
+        Vue.use(Upload)
         Vue.use(Menu)
         Vue.use(Dropdown)
         Vue.use(DropdownMenu)

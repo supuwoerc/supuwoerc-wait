@@ -39,8 +39,7 @@ html {
 
 @font-face {
     font-family: 'zk'; //重命名字体名
-    // src: url('./assets/ttf/zkklt.ttf'); //引入字体
-    src: url('https://cdn.jsdelivr.net/gh/supuwoerc/jsdelivr-cdn/assets/ttf/zkklt.ttf'); //引入自己创建的CDN仓库字体
+    src: url('./assets/ttf/zkklt.ttf'); //引入字体
     font-weight: normal;
     font-style: normal;
 }

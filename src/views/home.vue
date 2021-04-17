@@ -29,9 +29,6 @@
 </template>
 
 <script>
-import {
-    markdown
-} from "@/api/api";
 export default {
     name: "home",
     components: {
@@ -39,7 +36,7 @@ export default {
     },
     data: function () {
         return {
-            markdown: "",
+            markdown: "## 测试markdown组件",
             wow: null
         };
     },
@@ -47,7 +44,6 @@ export default {
     },
     mounted() {
         this.initWow();
-        this.getMarkdownData();
     },
     methods: {
         initWow() {
@@ -56,11 +52,6 @@ export default {
                 live: true,
                 mobile: true
             }).init();
-        },
-        getMarkdownData() {
-            markdown({}).then((res) => {
-                this.markdown = res;
-            })
         },
     },
 };
