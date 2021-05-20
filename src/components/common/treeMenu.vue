@@ -1,5 +1,5 @@
 <template>
-<el-drawer direction="ltr" size="60%" title="全部分类" :visible.sync="drawer" :with-header="true" :show-close="true">
+<el-drawer direction="ltr" size="200px" title="全部分类" :visible.sync="drawer" :with-header="true" :show-close="true">
     <div class="tree-menu-box">
         <el-tree :data="$store.getters.getNavigation" :props="defaultProps" @node-click="handleNodeClick"></el-tree>
     </div>

@@ -48,6 +48,10 @@ export default new Vuex.Store({
             name: "节点",
             router: "/classify",
             children: []
+        }, {
+          name: "登录",
+          router: "/login",
+          children: []
         }],
     },
     /**
