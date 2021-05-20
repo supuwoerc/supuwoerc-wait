@@ -1,3 +1,5 @@
+@import "../theme/themes";
+@import "../theme/mixin";
 .login-page {
   width: 100%;
   height: 100%;
@@ -27,6 +29,7 @@
         font-size: 18px;
         font-weight: bold;
         line-height: 60px;
+        @include font_color(whiteColor)
       }
     }
   }
