@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router';
-import moment from 'moment';
 Vue.use(Router)
 const home = () => { return import ("@/views/home") };
 const manager = () => { return import ("@/views/manager") };
 const newArticle = () => { return import ("@/views/newArticle") };
+const login = () => { return import ("@/views/login") };
 const notFound = () => { return import ("@/views/notFound") };
 const router = new Router({
         routes: [{
@@ -31,6 +31,13 @@ const router = new Router({
                 pageName: "新建",
                 keepAlive: true
             }
+        },{
+          path: "/login",
+          component: login,
+          meta: {
+            pageName: "登录",
+            keepAlive: false
+          }
         }, {
             path: "*",
             component: notFound,
