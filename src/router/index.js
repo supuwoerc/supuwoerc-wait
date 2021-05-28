@@ -6,6 +6,15 @@ const manager = () => { return import ("@/views/manager") };
 const newArticle = () => { return import ("@/views/newArticle") };
 const login = () => { return import ("@/views/login") };
 const notFound = () => { return import ("@/views/notFound") };
+
+const originalReplace = Router.prototype.replace;
+const originalPush = Router.prototype.push;
+Router.prototype.replace = function push(location) {
+  return originalReplace.call(this, location).catch(err => err);
+}
+Router.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch(err => err);
+}
 const router = new Router({
         routes: [{
             path: '/',

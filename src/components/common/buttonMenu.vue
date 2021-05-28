@@ -26,7 +26,7 @@
         left: 0,
         top: 0,
         screenWidth:document.documentElement.clientWidth,
-        showSelf:true
+        showSelf:false
       }
     },
     props: {
@@ -53,13 +53,13 @@
     watch: {
       screenWidth: {
         handler(newValue) {
-          console.log(newValue)
           this.showSelf = newValue <= 768;
           this.clientWidth = document.documentElement.clientWidth;
           this.clientHeight = document.documentElement.clientHeight;
           this.left = this.clientWidth - this.itemWidth - this.gapWidth;
           this.top = this.clientHeight * this.coefficientHeight;
-        }
+        },
+        immediate:true  //立马执行一次
       },
     },
     created() {
