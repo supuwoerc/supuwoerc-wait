@@ -10,10 +10,10 @@
       <div class="navbar">
         <el-menu :default-active="navActiveIndex" :router="true" class="el-menu-demo" mode="horizontal"
                  background-color="#ffffff" text-color="#333333" :active-text-color="$store.getters.getThemeColor">
-          <template v-for="(item,index) in $store.getters.getNavigation">
-            <el-menu-item v-if="item&&item.children&&item.children.length==0" :index="item.router">{{item.name}}
+          <template v-for="(item,index) in $store.getters.getNavigation" >
+            <el-menu-item v-if="item&&item.children&&item.children.length==0" :key="index" :index="item.router">{{item.name}}
             </el-menu-item>
-            <el-submenu :index="item.router" v-else>
+            <el-submenu :index="item.router" v-else :key="index">
               <template slot="title">{{item.name}}</template>
               <el-menu-item :index="cell.router" :key="cindex" v-for="(cell,cindex) in item.children">{{cell.name}}
               </el-menu-item>
@@ -21,7 +21,7 @@
           </template>
         </el-menu>
       </div>
-<!--      <theme-color-selector :color="this.$store.getters.getThemeColor" @color-update="colorChange"/>-->
+     <!-- <theme-color-selector :color="this.$store.getters.getThemeColor" @color-update="colorChange"/> -->
       <div class="setting">
         <i class="el-icon-setting"></i>
       </div>
@@ -39,7 +39,6 @@
 
 <script>
   import themeColorSelector from "./themeColorSelector";
-
   export default {
     name: "commonHeader",
     components: {

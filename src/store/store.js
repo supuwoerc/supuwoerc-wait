@@ -17,15 +17,15 @@ export default new Vuex.Store({
             router: "/frontEnd",
             children: [{
                 name: "选项1",
-                router: "",
+                router: "/8",
                 children: []
             }, {
                 name: "选项2",
-                router: "",
+                router: "/6",
                 children: []
             }, {
                 name: "选项3",
-                router: "",
+                router: "/999",
                 children: []
             }]
         }, {
@@ -33,15 +33,15 @@ export default new Vuex.Store({
             router: "/backEnd",
             children: [{
                 name: "选项4",
-                router: "",
+                router: "/1",
                 children: []
             }, {
                 name: "选项5",
-                router: "",
+                router: "/2",
                 children: []
             }, {
                 name: "选项6",
-                router: "",
+                router: "/3",
                 children: []
             }]
         }, {
@@ -49,9 +49,9 @@ export default new Vuex.Store({
             router: "/classify",
             children: []
         }, {
-          name: "登录",
-          router: "/login",
-          children: []
+            name: "登录",
+            router: "/login",
+            children: []
         }],
     },
     /**
