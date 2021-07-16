@@ -3,9 +3,7 @@
     <div class="form-area">
         <panel>
             <div class="login-form">
-                <div class="title">
-                    用户登录
-                </div>
+                <div class="title">用户登录</div>
                 <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="60px" class="demo-ruleForm">
                     <el-form-item label="账号" prop="pass">
                         <el-input type="text" v-model="ruleForm.username" autocomplete="off"></el-input>
@@ -19,13 +17,13 @@
                                 <el-input type="password" v-model="ruleForm.code" autocomplete="off"></el-input>
                             </el-col>
                             <el-col :span="8">
-                                <el-image style="height:40px;" :src="smsCode" fit="fill" @click="getCaptchaCode()"></el-image>
+                                <el-image style="height: 40px" :src="smsCode" fit="fill" @click="getCaptchaCode()"></el-image>
                             </el-col>
                         </el-row>
                     </el-form-item>
                     <el-form-item>
-                        <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
-                        <el-button @click="resetForm('ruleForm')">重置</el-button>
+                        <el-button type="primary" @click="submitForm()">提交</el-button>
+                        <!-- <el-button @click="resetForm('ruleForm')">重置</el-button> -->
                     </el-form-item>
                 </el-form>
             </div>
@@ -36,54 +34,56 @@
 
 <script>
 import {
-    getServerData
+    getServerData,
+    postServerData
 } from "../api/api";
 export default {
     name: "login",
     components: {
-        panel: () => import("@/components/views/panel")
+        panel: () => import("@/components/views/panel"),
     },
     data: function () {
         let checkUsername = (rule, value, callback) => {
             if (!value) {
-                return callback(new Error('请填写账号'));
+                return callback(new Error("请填写账号"));
             }
             callback();
         };
         let checkPassword = (rule, value, callback) => {
-            if (!value || value == '') {
-                return callback(new Error('请填写密码'));
+            if (!value || value == "") {
+                return callback(new Error("请填写密码"));
             }
             callback();
         };
         let checkCode = (rule, value, callback) => {
-            if (!value || value == '') {
-                return callback(new Error('请填写验证码'));
+            if (!value || value == "") {
+                return callback(new Error("请填写验证码"));
             }
             callback();
         };
         return {
             ruleForm: {
-                username: '',
-                password: '',
-                code: ''
+                username: "",
+                password: "",
+                code: "",
+                codeKey: "",
             },
             smsCode: "",
             rules: {
                 pass: [{
                     validator: checkUsername,
-                    trigger: 'blur'
-                }],
+                    trigger: "blur",
+                }, ],
                 checkPass: [{
                     validator: checkPassword,
-                    trigger: 'blur'
-                }],
+                    trigger: "blur",
+                }, ],
                 checkCode: [{
                     validator: checkCode,
-                    trigger: 'blur'
-                }]
-            }
-        }
+                    trigger: "blur",
+                }, ],
+            },
+        };
     },
     created() {
         this.getCaptchaCode();
@@ -91,18 +91,31 @@ export default {
     mounted() {},
     methods: {
         async getCaptchaCode() {
-            console.log(getServerData)
+            console.log(getServerData);
             let res = await getServerData("/captcha", null);
-            console.log(res)
+            console.log(res);
             if (res.code == 200) {
                 this.smsCode = res.data.code2Base64;
-            }else{
-              this.$message.error("验证码获取错误");
+                this.ruleForm.codeKey = res.data.codeKey;
+            } else {
+                this.$message.error("验证码获取错误");
             }
-        }
+        },
+        async submitForm() {
+            let res = await postServerData("/register", {
+                username: this.ruleForm.username,
+                password: this.ruleForm.password,
+                codeKey: this.ruleForm.codeKey,
+                code: this.ruleForm.code,
+            });
+            if (res.code == 200) {
+                this.$message.success(res.message);
+            }
+            this.getCaptchaCode();
+        },
     },
-    watch: {}
-}
+    watch: {},
+};
 </script>
 
 <style lang="scss" scoped>

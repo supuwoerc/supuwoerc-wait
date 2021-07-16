@@ -1,4 +1,5 @@
-import axios from 'axios'
+import axios from 'axios';
+import { Message } from 'element-ui';
 axios.defaults.baseURL = process.env.API;
 axios.defaults.timeout = 1000000;
 axios.defaults.headers.post['Content-Type'] = 'application/json';
@@ -19,7 +20,14 @@ axios.interceptors.request.use(
 
 axios.interceptors.response.use(
     // 请求成功
-    res => res.status === 200 ? Promise.resolve(res) : Promise.reject(res),
+
+    res => {
+        if (res && res.data && res.data.code != 200) {
+            res.data.message = res.data.message || "请求异常";
+            Message.error(res.data.message);
+        }
+        return res.status === 200 ? Promise.resolve(res) : Promise.reject(res)
+    },
 
     // 请求失败
     error => {
