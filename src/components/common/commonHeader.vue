@@ -23,7 +23,7 @@
       </div>
      <!-- <theme-color-selector :color="this.$store.getters.getThemeColor" @color-update="colorChange"/> -->
       <div class="setting">
-        <i class="el-icon-setting"></i>
+        <i class="el-icon-setting" @click="dialogVisible=true"></i>
       </div>
     </div>
     <!-- 主题切换弹窗 -->

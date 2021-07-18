@@ -5,15 +5,16 @@ const home = () => { return import ("@/views/home") };
 const manager = () => { return import ("@/views/manager") };
 const newArticle = () => { return import ("@/views/newArticle") };
 const login = () => { return import ("@/views/login") };
+const register = () => { return import ("@/views/register") };
 const notFound = () => { return import ("@/views/notFound") };
 
 const originalReplace = Router.prototype.replace;
 const originalPush = Router.prototype.push;
 Router.prototype.replace = function push(location) {
-  return originalReplace.call(this, location).catch(err => err);
+    return originalReplace.call(this, location).catch(err => err);
 }
 Router.prototype.push = function push(location) {
-  return originalPush.call(this, location).catch(err => err);
+    return originalPush.call(this, location).catch(err => err);
 }
 const router = new Router({
         routes: [{
@@ -40,13 +41,20 @@ const router = new Router({
                 pageName: "新建",
                 keepAlive: true
             }
-        },{
-          path: "/login",
-          component: login,
-          meta: {
-            pageName: "登录",
-            keepAlive: false
-          }
+        }, {
+            path: "/login",
+            component: login,
+            meta: {
+                pageName: "登录",
+                keepAlive: false
+            }
+        }, {
+            path: "/register",
+            component: register,
+            meta: {
+                pageName: "注册",
+                keepAlive: false
+            }
         }, {
             path: "*",
             component: notFound,

@@ -12,6 +12,7 @@ import {
     Container,
     Footer,
     Main,
+    Switch,
     Button,
     ColorPicker,
     Menu,
@@ -41,6 +42,7 @@ const element = {
         Vue.use(FormItem)
         Vue.use(Footer)
         Vue.use(Option)
+        Vue.use(Switch)
         Vue.use(OptionGroup)
         Vue.use(Input)
         Vue.use(Tree)
