@@ -26,9 +26,9 @@
                     </el-form-item>
                     <el-form-item label="" size="mini">
                         <el-row type="flex" justify="space-between">
-                            <el-col :span="10">
+                            <el-col :span="8">
                             </el-col>
-                            <el-col :span="10">
+                            <el-col :span="16">
                                 <div class="tips-register" @click="goLogin()">已有账号?去登录</div>
                             </el-col>
                         </el-row>

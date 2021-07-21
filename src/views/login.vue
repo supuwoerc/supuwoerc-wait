@@ -17,16 +17,16 @@
                                 <el-input type="password" v-model="ruleForm.code" autocomplete="off"></el-input>
                             </el-col>
                             <el-col :span="8" style="height: 40px;">
-                                <el-image style="height: 40px;width:133px;" :src="smsCode" fit="fill" @click="getCaptchaCode()"></el-image>
+                                <el-image style="height: 40px;width:100%;" :src="smsCode" fit="fill" @click="getCaptchaCode()"></el-image>
                             </el-col>
                         </el-row>
                     </el-form-item>
                     <el-form-item label="自动登录" size="mini">
                         <el-row type="flex" justify="space-between">
-                            <el-col :span="10">
+                            <el-col :span="8">
                                 <el-switch v-model="ruleForm.rememberMe"></el-switch>
                             </el-col>
-                            <el-col :span="10">
+                            <el-col :span="16">
                                 <div class="tips-register" @click="goRegister()">没有账号?去注册</div>
                             </el-col>
                         </el-row>
@@ -114,12 +114,13 @@ export default {
         async submitForm() {
             this.$refs['ruleForm'].validate(async (valid) => {
                 if (valid) {
-                    let formdata = new FormData();
-                    formdata.append("username",this.ruleForm.username);
-                    formdata.append("password",this.ruleForm.password);
-                    formdata.append("codeKey",this.ruleForm.codeKey);
-                    formdata.append("code",this.ruleForm.code);
-                    let res = await postServerData("/login/submit", formdata);
+                    let params = {
+                        username: this.ruleForm.username,
+                        password: this.ruleForm.password,
+                        codeKey: this.ruleForm.codeKey,
+                        code: this.ruleForm.code,
+                    }
+                    let res = await postServerData("/login/submit", params);
                     if (res.code == 200) {
                         this.$message.success(res.message);
                     }
