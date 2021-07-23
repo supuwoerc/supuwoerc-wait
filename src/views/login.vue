@@ -120,9 +120,13 @@ export default {
                         codeKey: this.ruleForm.codeKey,
                         code: this.ruleForm.code,
                     }
-                    let res = await postServerData("/login/submit", params);
+                    let res = await postServerData("/login/submit", params,{"Content-Type":"application/x-www-form-urlencoded"});
                     if (res.code == 200) {
+                        sessionStorage.setItem("Sanye-Authorization",res.data.token);
                         this.$message.success(res.message);
+                        this.$router.push({
+                            path:"/"
+                        })
                     }
                 } else {
                     return false;

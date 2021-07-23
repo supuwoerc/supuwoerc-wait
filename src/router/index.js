@@ -6,6 +6,7 @@ const manager = () => { return import ("@/views/manager") };
 const newArticle = () => { return import ("@/views/newArticle") };
 const login = () => { return import ("@/views/login") };
 const register = () => { return import ("@/views/register") };
+const userInfo = () => { return import ("@/views/userInfo") };
 const notFound = () => { return import ("@/views/notFound") };
 
 const originalReplace = Router.prototype.replace;
@@ -53,6 +54,13 @@ const router = new Router({
             component: register,
             meta: {
                 pageName: "注册",
+                keepAlive: false
+            }
+        }, {
+            path: "/userInfo",
+            component: userInfo,
+            meta: {
+                pageName: "个人信息",
                 keepAlive: false
             }
         }, {

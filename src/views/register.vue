@@ -119,7 +119,6 @@ export default {
     mounted() {},
     methods: {
         async getCaptchaCode() {
-            console.log(getServerData);
             let res = await getServerData("/captcha", null);
             console.log(res);
             if (res.code == 200) {
