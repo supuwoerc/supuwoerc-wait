@@ -5,6 +5,7 @@ import App from './App';
 import router from './router';
 import '@/assets/font/iconfont.css'; //阿里字体图标  
 import '@/style/element/element-variables.scss'; //自定义主题色element配置
+import '@/style/common/wickedcss.min.css'; //动画
 import element from '@/element/index';
 Vue.use(element); //按需加载element非全局组件
 import wow from 'wowjs';

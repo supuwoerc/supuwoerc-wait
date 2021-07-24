@@ -20,7 +20,7 @@
                                 <el-input type="text" v-model="ruleForm.code" autocomplete="off"></el-input>
                             </el-col>
                             <el-col :span="8" style="height: 40px;">
-                                <el-image style="height: 40px" :src="smsCode" fit="fill" @click="getCaptchaCode()"></el-image>
+                                <el-image style="height: 40px;width:100%;" :src="smsCode" fit="fill" @click="getCaptchaCode()"></el-image>
                             </el-col>
                         </el-row>
                     </el-form-item>

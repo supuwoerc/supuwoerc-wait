@@ -9,6 +9,11 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        animation-name: zoomer;
+        -webkit-animation-name: zoomer;
+        -webkit-animation-duration: .6s;
+        -webkit-animation-timing-function: cubic-bezier(.5, .2, .3, 1);
+        animation-iteration-count: 1;
         //电脑样式,一般不写
         @media screen and(min-width: 1200px) {
             width: 500px;
@@ -37,5 +42,14 @@
                 cursor: pointer;
             }
         }
+    }
+}
+
+@keyframes zoomer {
+    0% {
+        transform: translate(-50%, -50%) scale(.5);
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
     }
 }

@@ -2,8 +2,8 @@
   <div class="common-header-container">
     <div class="left">
       <div @click="goIndex()">
-        <i class="iconfont icon-boke1" style="color:#ffffff;"></i>
-        <span>散夜</span>
+        <i class="iconfont icon-boke1 logo" style="color:#ffffff;"></i>
+        <span class="logo">散夜</span>
       </div>
     </div>
     <div class="right">
@@ -23,7 +23,7 @@
       </div>
      <!-- <theme-color-selector :color="this.$store.getters.getThemeColor" @color-update="colorChange"/> -->
       <div class="setting">
-        <i class="el-icon-setting" @click="dialogVisible=true"></i>
+        <i class="el-icon-setting" @click="switchMode()"></i>
       </div>
     </div>
     <!-- 主题切换弹窗 -->
@@ -80,7 +80,7 @@
       switchMode() {
         let cliwidth = document.body.clientWidth;
         if (cliwidth > 1200) {
-          this.dialogWidth = "300px"
+          this.dialogWidth = "500px"
         }
         this.dialogVisible = true;
       },

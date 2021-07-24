@@ -18,9 +18,13 @@
 <script>
 export default {
     name: "App",
+    data: function () {
+        return {
+        }
+    },
     components: {
-        commonHeader:()=> import("@/components/common/commonHeader"),
-        buttonMenu:()=> import("@/components/common/buttonMenu")
+        commonHeader: () => import("@/components/common/commonHeader"),
+        buttonMenu: () => import("@/components/common/buttonMenu")
     },
     watch: {
         $route(newValue, oldValue) {

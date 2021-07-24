@@ -1,6 +1,6 @@
 <template>
 <div class="login-page">
-    <div class="form-area">
+    <div class="form-area zoomer">
         <panel>
             <div class="login-form">
                 <div class="title">用户登录</div>
@@ -21,10 +21,9 @@
                             </el-col>
                         </el-row>
                     </el-form-item>
-                    <el-form-item label="自动登录" size="mini">
+                    <el-form-item label="" size="mini">
                         <el-row type="flex" justify="space-between">
                             <el-col :span="8">
-                                <el-switch v-model="ruleForm.rememberMe"></el-switch>
                             </el-col>
                             <el-col :span="16">
                                 <div class="tips-register" @click="goRegister()">没有账号?去注册</div>
@@ -75,8 +74,7 @@ export default {
                 username: "",
                 password: "",
                 code: "",
-                codeKey: "",
-                rememberMe: false
+                codeKey: ""
             },
             smsCode: "",
             rules: {
