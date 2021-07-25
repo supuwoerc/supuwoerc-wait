@@ -106,7 +106,7 @@ export default {
                 this.smsCode = res.data.code2Base64;
                 this.ruleForm.codeKey = res.data.codeKey;
             } else {
-                this.$message.error("验证码获取错误");
+                this.$message.error("验证码获取失败");
             }
         },
         async submitForm() {
@@ -120,7 +120,7 @@ export default {
                     }
                     let res = await postServerData("/login/submit", params,{"Content-Type":"application/x-www-form-urlencoded"});
                     if (res.code == 200) {
-                        sessionStorage.setItem("Sanye-Authorization",res.data.token);
+                        localStorage.setItem("Sanye-Authorization",res.data.token);
                         this.$message.success(res.message);
                         this.$router.push({
                             path:"/"

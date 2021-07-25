@@ -125,7 +125,7 @@ export default {
                 this.smsCode = res.data.code2Base64;
                 this.ruleForm.codeKey = res.data.codeKey;
             } else {
-                this.$message.error("验证码获取错误");
+                this.$message.error("验证码获取失败");
             }
         },
         submitForm() {
