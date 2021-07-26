@@ -35,6 +35,27 @@ html {
             height: 100%;
         }
     }
+    @media screen and (max-width: 768px) {
+        .el-message {
+            min-width: 300px !important;
+        }
+        .el-message-box {
+            width: 300px !important;
+        }
+        .el-dialog__wrapper .el-dialog {
+            width: 300px !important;
+            .el-dialog__body {
+                padding: 10px 20px !important;
+                .el-form-item__label {
+                    width: 68px !important;
+                }
+                .el-select,
+                .el-input {
+                    width: 180px !important;
+                }
+            }
+        }
+    }
 }
 
 @font-face {

@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { Message } from 'element-ui';
+import { Message, MessageBox } from 'element-ui';
+import router from '@/router/index.js';
 import qs from 'qs'; //封装post请求Content-Type为application/x-www-form-urlencoded的参数
 axios.defaults.baseURL = process.env.API;
 axios.defaults.timeout = 1000000;
@@ -17,31 +18,35 @@ axios.interceptors.request.use(
     },
     error => {
         return Promise.error(error);
-    })
-
+    });
 axios.interceptors.response.use(
     // 请求成功
     res => {
-        if (res && res.data && res.data.code != 200) {
+        //502为token过期的状态,返回结果中有新的token,用新的token来重新发送请求,需要考虑并发的多个请求(加入重试队列)
+        if (res && res.data && res.data.code === 502) {
+            localStorage.setItem("Sanye-Authorization", res.data.data);
+            return new Promise((resolve, reject) => {
+                MessageBox.alert('收到新令牌,请刷新页面', '提示', {
+                    confirmButtonText: '好的',
+                    callback: action => {
+                        console.log(action)
+                        router.go(0);
+                    }
+                });
+            });
+        }
+        if (res && res.data && res.data.code != 200 && res.data.code != 502) {
             res.data.message = res.data.message || "请求异常";
             Message.error(res.data.message);
         }
-        return res.status === 200 ? Promise.resolve(res) : Promise.reject(res)
+        return Promise.resolve(res);
     },
 
     // 请求失败
     error => {
-        if (error.response) {
-            console.log(error.response)
-            if (error.response.status === 401) {
-                Message.error(res.data.message);
-            } else {
-                return Promise.reject(error.response);
-            }
-        } else {
-            return Promise.reject(error.response);
-        }
+        return Promise.reject(res);
     });
+
 // 封装xiaos请求  封装axios里的get
 export function axios_get(url, params) {
     return new Promise(

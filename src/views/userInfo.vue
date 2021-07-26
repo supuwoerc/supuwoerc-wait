@@ -18,6 +18,8 @@ export default {
     },
     created() {
         this.getUserinfo();
+        //this.getUserinfo();
+        //this.getUserinfo();
     },
     mounted() {},
     methods: {
