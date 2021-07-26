@@ -111,8 +111,7 @@ export default {
         },
         async submitForm() {
             if(localStorage.getItem("Sanye-Authorization")){
-                this.$message.error("当前为登录状态");
-                return;
+                localStorage.removeItem("Sanye-Authorization");
             }
             this.$refs['ruleForm'].validate(async (valid) => {
                 if (valid) {
