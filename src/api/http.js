@@ -35,6 +35,11 @@ axios.interceptors.response.use(
                 });
             });
         }
+        //501情况,携带的token是伪造的,或者token失效被移除了,(需要重新获取菜单和登录)
+        if (res && res.data && res.data.code === 501) {
+            localStorage.removeItem("Sanye-Authorization", res.data.data);
+            //TODO
+        }
         if (res && res.data && res.data.code != 200 && res.data.code != 502) {
             res.data.message = res.data.message || "请求异常";
             Message.error(res.data.message);
