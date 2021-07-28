@@ -1,11 +1,13 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import permission from "./module/permission";
 Vue.use(Vuex);
 export default new Vuex.Store({
     /**
      * 所有的数据都放在state中
      */
     state: {
+        ...permission.state,
         themeColor: localStorage.getItem('themeColor') || "#409EFF", //element主题
         themeMode: localStorage.getItem('themeMode') || "light", //暗黑模式
         navigation: [{
@@ -58,6 +60,7 @@ export default new Vuex.Store({
      * 操作数据，唯一的通道是mutations
      */
     mutations: {
+        ...permission.mutations,
         setThemeColor(state, payload) {
             localStorage.setItem("themeColor", payload);
             state.themeColor = payload;
@@ -79,8 +82,11 @@ export default new Vuex.Store({
     /**
      * actions,可以来做异步操作，然后提交给mutations，而后再对state(数据)进行操作
      */
-    actions: {},
+    actions: {
+        ...permission.actions
+    },
     getters: {
+        ...permission.getters,
         getThemeColor: state => {
             return state.themeColor;
         },

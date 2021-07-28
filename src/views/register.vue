@@ -129,6 +129,9 @@ export default {
             }
         },
         submitForm() {
+            if(localStorage.getItem("Sanye-Authorization")){
+                localStorage.removeItem("Sanye-Authorization");
+            }
             this.$refs['ruleForm'].validate(async (valid) => {
                 if (valid) {
                     let res = await postServerData("/register", {
