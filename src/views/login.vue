@@ -6,7 +6,7 @@
                 <div class="title">用户登录</div>
                 <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="70px" class="demo-ruleForm">
                     <el-form-item label="账号" prop="username">
-                        <el-input type="text" v-model="ruleForm.username" autocomplete="off"></el-input>
+                        <el-input type="text" v-model="ruleForm.username" autocomplete="true"></el-input>
                     </el-form-item>
                     <el-form-item label="密码" prop="password">
                         <el-input type="password" v-model="ruleForm.password" autocomplete="off"></el-input>
@@ -24,6 +24,7 @@
                     <el-form-item label="" size="mini">
                         <el-row type="flex" justify="space-between">
                             <el-col :span="8">
+                                <div class="tips-active" @click="doActive()">激活账号</div>
                             </el-col>
                             <el-col :span="16">
                                 <div class="tips-register" @click="goRegister()">没有账号?去注册</div>
@@ -37,13 +38,24 @@
             </div>
         </panel>
     </div>
+    <el-dialog title="激活账号" :visible.sync="dialogFormVisible">
+        <el-form :model="ruleForm">
+            <el-form-item label="" prop="username" :label-width="'0'">
+                <el-input style="width:100% !important;" placeholder="填写要激活的账号" v-model="ruleForm.username" autocomplete="off"></el-input>
+            </el-form-item>
+        </el-form>
+        <div slot="footer" class="dialog-footer">
+            <el-button @click="dialogFormVisible = false">取消</el-button>
+            <el-button type="primary" @click="submitActiveForm()">确 定</el-button>
+        </div>
+    </el-dialog>
 </div>
 </template>
 
 <script>
 import {
-    getServerData,
-    postServerData
+    getCaptcha,
+    doLogin
 } from "../api/api";
 export default {
     name: "login",
@@ -70,6 +82,7 @@ export default {
             callback();
         };
         return {
+            dialogFormVisible: false,
             ruleForm: {
                 username: "",
                 password: "",
@@ -99,9 +112,7 @@ export default {
     mounted() {},
     methods: {
         async getCaptchaCode() {
-            console.log(getServerData);
-            let res = await getServerData("/captcha", null);
-            console.log(res);
+            let res = await getCaptcha();
             if (res.code == 200) {
                 this.smsCode = res.data.code2Base64;
                 this.ruleForm.codeKey = res.data.codeKey;
@@ -110,29 +121,31 @@ export default {
             }
         },
         async submitForm() {
-            if(localStorage.getItem("Sanye-Authorization")){
+            if (localStorage.getItem("Sanye-Authorization")) {
                 localStorage.removeItem("Sanye-Authorization");
             }
             this.$refs['ruleForm'].validate(async (valid) => {
                 if (valid) {
-                    let params = {
-                        username: this.ruleForm.username,
-                        password: this.ruleForm.password,
-                        codeKey: this.ruleForm.codeKey,
-                        code: this.ruleForm.code,
-                    }
-                    let res = await postServerData("/login/submit", params,{"Content-Type":"application/x-www-form-urlencoded"});
+                    let params = this.ruleForm;
+                    let res = await doLogin(params);
                     if (res.code == 200) {
-                        localStorage.setItem("Sanye-Authorization",res.data.token);
+                        localStorage.setItem("Sanye-Authorization", res.data.token);
                         this.$message.success(res.message);
+                        this.$store.commit("setLoginStatus", true);
                         this.$router.push({
-                            path:"/"
+                            path: "/"
                         })
                     }
                 } else {
                     return false;
                 }
             });
+        },
+        async submitActiveForm(){
+            
+        },
+        doActive() {
+            this.dialogFormVisible=true;
         },
         goRegister() {
             this.$router.replace({

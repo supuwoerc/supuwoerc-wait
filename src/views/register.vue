@@ -5,7 +5,7 @@
             <div class="login-form">
                 <div class="title">用户注册</div>
                 <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="70px" class="demo-ruleForm">
-                    <el-form-item label="账号" prop="username">
+                    <el-form-item label="邮箱" prop="username">
                         <el-input type="text" v-model="ruleForm.username" autocomplete="off"></el-input>
                     </el-form-item>
                     <el-form-item label="密码" prop="password">
@@ -45,8 +45,8 @@
 
 <script>
 import {
-    getServerData,
-    postServerData
+    getCaptcha,
+    doRegister
 } from "../api/api";
 export default {
     name: "register",
@@ -55,11 +55,12 @@ export default {
     },
     data: function () {
         let checkUsername = (rule, value, callback) => {
+            let reg = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
             if (!value || value.trim() == "") {
-                return callback(new Error("请填写账号"));
+                return callback(new Error("请填写邮箱"));
             }
-            if (value.length < 4 || value.length > 10) {
-                return callback(new Error("账号长度必须在4-10之间"));
+            if (!reg.test(value)) {
+                return callback(new Error("邮箱格式不正确"));
             }
             callback();
         };
@@ -119,8 +120,7 @@ export default {
     mounted() {},
     methods: {
         async getCaptchaCode() {
-            let res = await getServerData("/captcha", null);
-            console.log(res);
+            let res = await getCaptcha();
             if (res.code == 200) {
                 this.smsCode = res.data.code2Base64;
                 this.ruleForm.codeKey = res.data.codeKey;
@@ -134,12 +134,8 @@ export default {
             }
             this.$refs['ruleForm'].validate(async (valid) => {
                 if (valid) {
-                    let res = await postServerData("/register", {
-                        username: this.ruleForm.username,
-                        password: this.ruleForm.password,
-                        codeKey: this.ruleForm.codeKey,
-                        code: this.ruleForm.code,
-                    });
+                    let params=this.ruleForm;
+                    let res = await doRegister(params);
                     if (res.code == 200) {
                         this.$message.success(res.message);
                         this.resetForm();

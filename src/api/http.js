@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { Message, MessageBox } from 'element-ui';
 import router from '@/router/index.js';
+import store from '@/store/store';
 import qs from 'qs'; //封装post请求Content-Type为application/x-www-form-urlencoded的参数
 axios.defaults.baseURL = process.env.API;
 axios.defaults.timeout = 1000000;
@@ -37,6 +38,7 @@ axios.interceptors.response.use(
         }
         //501情况,携带的token是伪造的,或者token失效被移除了,(需要重新获取菜单和登录)
         if (res && res.data && res.data.code === 501) {
+            store.commit("setLoginStatus", false);
             localStorage.removeItem("Sanye-Authorization", res.data.data);
             return new Promise((resolve, reject) => {
                 MessageBox.alert('令牌已注销', '提示', {
@@ -49,7 +51,7 @@ axios.interceptors.response.use(
                 });
             });
         }
-        if (res && res.data && res.data.code != 200 && res.data.code != 502) {
+        if (res && res.data && res.data.code != 200) {
             res.data.message = res.data.message || "请求异常";
             Message.error(res.data.message);
         }

@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import permission from "./module/permission";
+import createVuexAlong from 'vuex-along' //vuex-along做持久化
 Vue.use(Vuex);
 export default new Vuex.Store({
     /**
@@ -10,51 +11,6 @@ export default new Vuex.Store({
         ...permission.state,
         themeColor: localStorage.getItem('themeColor') || "#409EFF", //element主题
         themeMode: localStorage.getItem('themeMode') || "light", //暗黑模式
-        navigation: [{
-            name: "首页",
-            router: "/",
-            children: []
-        }, {
-            name: "前端",
-            router: "/frontEnd",
-            children: [{
-                name: "选项1",
-                router: "/8",
-                children: []
-            }, {
-                name: "选项2",
-                router: "/6",
-                children: []
-            }, {
-                name: "选项3",
-                router: "/999",
-                children: []
-            }]
-        }, {
-            name: "后端",
-            router: "/backEnd",
-            children: [{
-                name: "选项4",
-                router: "/1",
-                children: []
-            }, {
-                name: "选项5",
-                router: "/2",
-                children: []
-            }, {
-                name: "选项6",
-                router: "/3",
-                children: []
-            }]
-        }, {
-            name: "节点",
-            router: "/classify",
-            children: []
-        }, {
-            name: "登录",
-            router: "/login",
-            children: []
-        }],
     },
     /**
      * 操作数据，唯一的通道是mutations
@@ -96,5 +52,6 @@ export default new Vuex.Store({
         getThemeMode: state => {
             return state.themeMode;
         }
-    }
+    },
+    plugins: [createVuexAlong()]
 })

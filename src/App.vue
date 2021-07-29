@@ -19,8 +19,12 @@
 export default {
     name: "App",
     data: function () {
-        return {
-        }
+        return {}
+    },
+    computed: {
+        loginStatus() {
+            return this.$store.state.loginStatus;
+        },
     },
     components: {
         commonHeader: () => import("@/components/common/commonHeader"),
@@ -32,6 +36,19 @@ export default {
                 document.title = newValue.meta.pageName;
             }
         },
+        loginStatus: {
+            handler: function (newVal) {
+                if (newVal) {
+                    this.$store.dispatch("getCurrentUserMenu");
+                } else {
+                    this.$store.dispatch("getDefaultMenus");
+                }
+            },
+            immediate: true
+        }
+    },
+    created() {
+
     },
     mounted() {
         this.initThemeMode();
