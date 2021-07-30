@@ -51,6 +51,14 @@ axios.interceptors.response.use(
                 });
             });
         }
+        //token过期
+        if (res && res.data && res.data.code === 401) {
+            store.commit("setLoginStatus", false);
+            localStorage.removeItem("Sanye-Authorization", res.data.data);
+            return new Promise((resolve, reject) => {
+                Message.error(res.data.message);
+            });
+        }
         if (res && res.data && res.data.code != 200) {
             res.data.message = res.data.message || "请求异常";
             Message.error(res.data.message);

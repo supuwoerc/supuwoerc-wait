@@ -24,7 +24,6 @@
                     <el-form-item label="" size="mini">
                         <el-row type="flex" justify="space-between">
                             <el-col :span="8">
-                                <div class="tips-active" @click="doActive()">激活账号</div>
                             </el-col>
                             <el-col :span="16">
                                 <div class="tips-register" @click="goRegister()">没有账号?去注册</div>
@@ -38,16 +37,11 @@
             </div>
         </panel>
     </div>
-    <el-dialog title="激活账号" :visible.sync="dialogFormVisible">
-        <el-form :model="ruleForm">
-            <el-form-item label="" prop="username" :label-width="'0'">
-                <el-input style="width:100% !important;" placeholder="填写要激活的账号" v-model="ruleForm.username" autocomplete="off"></el-input>
-            </el-form-item>
-        </el-form>
-        <div slot="footer" class="dialog-footer">
-            <el-button @click="dialogFormVisible = false">取消</el-button>
-            <el-button type="primary" @click="submitActiveForm()">确 定</el-button>
-        </div>
+    <el-dialog title="提示" :visible.sync="dialogVisible" width="30%" :before-close="handleClose">
+        <span>账户未激活,请查收邮件激活后登录</span>
+        <span slot="footer" class="dialog-footer">
+            <el-button type="primary" @click="dialogVisible = false">好的</el-button>
+        </span>
     </el-dialog>
 </div>
 </template>
@@ -82,7 +76,7 @@ export default {
             callback();
         };
         return {
-            dialogFormVisible: false,
+            dialogVisible:false,
             ruleForm: {
                 username: "",
                 password: "",
@@ -136,16 +130,13 @@ export default {
                             path: "/"
                         })
                     }
+                    if(res.code==555){
+                        this.dialogVisible=true;
+                    }
                 } else {
                     return false;
                 }
             });
-        },
-        async submitActiveForm(){
-            
-        },
-        doActive() {
-            this.dialogFormVisible=true;
         },
         goRegister() {
             this.$router.replace({

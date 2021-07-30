@@ -40,6 +40,13 @@
             </div>
         </panel>
     </div>
+    <el-dialog title="提示" :visible.sync="dialogVisible" width="30%" :before-close="handleClose">
+        <span>注册成功,请查收邮件激活账号后登录</span>
+        <span slot="footer" class="dialog-footer">
+            <el-button type="primary" @click="dialogVisible = false">好的</el-button>
+        </span>
+    </el-dialog>
+
 </div>
 </template>
 
@@ -86,6 +93,7 @@ export default {
             callback();
         };
         return {
+            dialogVisible:true,
             ruleForm: {
                 username: "",
                 password: "",
@@ -129,16 +137,17 @@ export default {
             }
         },
         submitForm() {
-            if(localStorage.getItem("Sanye-Authorization")){
+            if (localStorage.getItem("Sanye-Authorization")) {
                 localStorage.removeItem("Sanye-Authorization");
             }
             this.$refs['ruleForm'].validate(async (valid) => {
                 if (valid) {
-                    let params=this.ruleForm;
+                    let params = this.ruleForm;
                     let res = await doRegister(params);
                     if (res.code == 200) {
                         this.$message.success(res.message);
                         this.resetForm();
+                        this.dialogVisible=true;
                     }
                     this.getCaptchaCode();
                 } else {
@@ -149,9 +158,9 @@ export default {
         resetForm() {
             this.$refs['ruleForm'].resetFields();
         },
-        goLogin(){
+        goLogin() {
             this.$router.replace({
-                path:`/login`
+                path: `/login`
             })
         },
         async getUSerInfo() {
