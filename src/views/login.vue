@@ -31,16 +31,35 @@
                         </el-row>
                     </el-form-item>
                     <el-form-item>
-                        <el-button type="primary" @click="submitForm()">提交</el-button>
+                        <el-row type="flex" justify="space-between" align="middle">
+                            <el-col :span="8">
+                                <el-button type="primary" @click="submitForm()">提交</el-button>
+                            </el-col>
+                            <el-col :span="10">
+                                <div class="tips-register" @click="reSendEmail()">
+                                    未激活?<i :style="{color:$store.getters.getThemeColor,fontSize:'22px'}" class="el-icon-info"></i>
+                                </div>
+                            </el-col>
+                        </el-row>
                     </el-form-item>
                 </el-form>
             </div>
         </panel>
     </div>
-    <el-dialog title="提示" :visible.sync="dialogVisible" width="30%" :before-close="handleClose">
+    <el-dialog title="提示" :visible.sync="dialogVisible" width="30%">
         <span>账户未激活,请查收邮件激活后登录</span>
         <span slot="footer" class="dialog-footer">
             <el-button type="primary" @click="dialogVisible = false">好的</el-button>
+        </span>
+    </el-dialog>
+    <el-dialog title="邮件激活" :visible.sync="dialogVisibleActive" width="30%">
+        <el-form :model="ruleForm" ref="activeForm" :rules="rules">
+            <el-form-item style="margin:0" label="" label-width="0" prop="username">
+                <el-input style="width:100% !important;" placeholder="填写您的邮箱" v-model="ruleForm.username" autocomplete="off"></el-input>
+            </el-form-item>
+        </el-form>
+        <span slot="footer" class="dialog-footer">
+            <el-button type="primary" @click="submitActive()">激活</el-button>
         </span>
     </el-dialog>
 </div>
@@ -58,8 +77,12 @@ export default {
     },
     data: function () {
         let checkUsername = (rule, value, callback) => {
-            if (!value) {
-                return callback(new Error("请填写账号"));
+            let reg = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+            if (!value || value.trim() == "") {
+                return callback(new Error("请填写邮箱"));
+            }
+            if (!reg.test(value)) {
+                return callback(new Error("邮箱格式不正确"));
             }
             callback();
         };
@@ -76,7 +99,8 @@ export default {
             callback();
         };
         return {
-            dialogVisible:false,
+            dialogVisible: false,
+            dialogVisibleActive: false,
             ruleForm: {
                 username: "",
                 password: "",
@@ -130,9 +154,21 @@ export default {
                             path: "/"
                         })
                     }
-                    if(res.code==555){
-                        this.dialogVisible=true;
+                    if (res.code == 555) {
+                        this.dialogVisible = true;
                     }
+                } else {
+                    return false;
+                }
+            });
+        },
+        reSendEmail() {
+            this.dialogVisibleActive = true;
+        },
+        async submitActive() {
+            this.$refs['activeForm'].validate(async (valid) => {
+                if (valid) {
+                    
                 } else {
                     return false;
                 }

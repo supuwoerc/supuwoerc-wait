@@ -40,7 +40,7 @@
             </div>
         </panel>
     </div>
-    <el-dialog title="提示" :visible.sync="dialogVisible" width="30%" :before-close="handleClose">
+    <el-dialog title="提示" :visible.sync="dialogVisible" width="30%">
         <span>注册成功,请查收邮件激活账号后登录</span>
         <span slot="footer" class="dialog-footer">
             <el-button type="primary" @click="dialogVisible = false">好的</el-button>
@@ -93,7 +93,7 @@ export default {
             callback();
         };
         return {
-            dialogVisible:true,
+            dialogVisible:false,
             ruleForm: {
                 username: "",
                 password: "",

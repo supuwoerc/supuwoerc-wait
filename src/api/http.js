@@ -59,7 +59,7 @@ axios.interceptors.response.use(
                 Message.error(res.data.message);
             });
         }
-        if (res && res.data && res.data.code != 200) {
+        if (res && res.data && res.data.code != 200 && res.data.code != 555) {
             res.data.message = res.data.message || "请求异常";
             Message.error(res.data.message);
         }
