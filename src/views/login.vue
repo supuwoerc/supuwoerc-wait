@@ -59,7 +59,7 @@
             </el-form-item>
         </el-form>
         <span slot="footer" class="dialog-footer">
-            <el-button type="primary" @click="submitActive()">激活</el-button>
+            <el-button type="primary" :disabled="isDisabled" @click="submitActive()">{{buttonName}}</el-button>
         </span>
     </el-dialog>
 </div>
@@ -68,7 +68,8 @@
 <script>
 import {
     getCaptcha,
-    doLogin
+    doLogin,
+    activeAccount
 } from "../api/api";
 export default {
     name: "login",
@@ -108,6 +109,9 @@ export default {
                 codeKey: ""
             },
             smsCode: "",
+            time: 60,
+            isDisabled: false,
+            buttonName: "获取",
             rules: {
                 username: [{
                     validator: checkUsername,
@@ -166,9 +170,24 @@ export default {
             this.dialogVisibleActive = true;
         },
         async submitActive() {
+            let me = this;
             this.$refs['activeForm'].validate(async (valid) => {
                 if (valid) {
-                    
+                    me.isDisabled = true;
+                    let interval = window.setInterval(function () {
+                        me.buttonName = me.time+"s";
+                        --me.time;
+                        if (me.time < 0) {
+                            me.buttonName = "获取";
+                            me.time = 60;
+                            me.isDisabled = false;
+                            window.clearInterval(interval);
+                        }
+                    }, 1000);
+                    let res = await activeAccount(me.ruleForm.username);
+                    if(res&&res.code==200){
+                        this.$message.success(res.message);
+                    }
                 } else {
                     return false;
                 }

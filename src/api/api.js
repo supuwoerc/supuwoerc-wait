@@ -15,4 +15,4 @@ export const getDefaultMenus = () => axios_get("/menu/defaultMenu");
 //获取当前用户登录后的的菜单
 export const getMenus = () => axios_get("/menu/currentUserMenu");
 //发送激活账户邮件
-export const activeAccount = () => axios_post("/menu/currentUserMenu");
+export const activeAccount = (p) => axios_post(`/user/reActiveUser/${p}`);
