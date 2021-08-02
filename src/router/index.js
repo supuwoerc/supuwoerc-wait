@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router';
+import store from "../store/store";
 Vue.use(Router)
 const home = () => { return import ("@/views/home") };
 const manage = () => { return import ("@/views/manage") };
@@ -76,14 +77,28 @@ export const asyncRouter = [{
         },
     }]
 }];
-const router = new Router({
-    mode: 'hash',
-    routes: defaultRouter
-});
+//https://github.com/vuejs/vue-router/issues/1234
+const createRouter = () =>
+    new Router({
+        mode: "hash",
+        routes: defaultRouter
+    });
+const router = createRouter();
+// 定义一个resetRouter 方法，在退出登录时，调用即可
+export function resetRouter() {
+    const newRouter = createRouter();
+    router.matcher = newRouter.matcher;
+}
 /**
  * 添加全局的路由守卫
  */
-router.beforeEach((to, from, next) => {
-    next();
+router.beforeEach(async(to, from, next) => {
+    if (store.state.loginStatus && !store.getters.getHasGetPermissionRoutes) {
+        await store.dispatch("getRoleRouter");
+        next({...to, replace: true });
+    } else {
+        next();
+    }
+
 })
 export default router;

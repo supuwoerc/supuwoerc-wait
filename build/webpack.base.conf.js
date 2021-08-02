@@ -16,10 +16,10 @@ module.exports = {
     },
     plugins: [
         //非生产环境开启调试
-        new vConsolePlugin({
-            filter: [],
-            enable: process.env.NODE_ENV != 'production'
-        })
+        // new vConsolePlugin({
+        //     filter: [],
+        //     enable: process.env.NODE_ENV != 'production'
+        // })
     ],
     output: {
         path: config.build.assetsRoot,

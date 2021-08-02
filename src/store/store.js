@@ -53,5 +53,11 @@ export default new Vuex.Store({
             return state.themeMode;
         }
     },
-    plugins: [createVuexAlong()]
+    plugins: [createVuexAlong({
+        name: "sanye-vuex-along",
+        local: {
+            list: ["hasGetPermissionRoutes"], //动态路由不持久化
+            isFilter: true
+        }
+    })]
 })
