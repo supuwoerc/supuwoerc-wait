@@ -56,7 +56,7 @@ export default new Vuex.Store({
     plugins: [createVuexAlong({
         name: "sanye-vuex-along",
         local: {
-            list: ["hasGetPermissionRoutes"], //动态路由不持久化
+            list: ["hasGetPermissionRoutes"], //动态路由不持久化(刷新时需要重新获取动态路由)
             isFilter: true
         }
     })]
