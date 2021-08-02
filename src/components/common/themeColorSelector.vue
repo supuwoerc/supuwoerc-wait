@@ -97,10 +97,8 @@ export default {
         },
         // 获取element-ui主题样式
         getCSSString() {
-            //此链接为element在线css地址，因为不考虑升级element，并且为了避免网络等影响，下载到了本地static目录。
             // const url = `https://unpkg.com/element-ui@${version}/lib/theme-chalk/index.css`;
-            //const url = `static/element/index.css`;
-            elementIndexCss({}).then((res)=>{
+            elementIndexCss(`https://unpkg.com/element-ui@${version}/lib/theme-chalk/index.css`).then((res)=>{
                 this.chalk = res.replace(/@font-face{[^}]+}/, "");
             })
         },

@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router';
 Vue.use(Router)
 const home = () => { return import ("@/views/home") };
-const manager = () => { return import ("@/views/manager") };
+const manage = () => { return import ("@/views/manage") };
 const newArticle = () => { return import ("@/views/newArticle") };
 const login = () => { return import ("@/views/login") };
 const register = () => { return import ("@/views/register") };
@@ -57,9 +57,9 @@ export const defaultRouter = [{
 }];
 //权限路由
 export const asyncRouter = [{
-    path: '/manager',
-    name: 'manager',
-    component: manager,
+    path: '/manage',
+    name: 'manage',
+    component: manage,
     meta: {
         pageName: "管理",
         keepAlive: false,

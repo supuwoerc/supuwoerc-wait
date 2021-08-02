@@ -1,12 +1,12 @@
 <template>
     <div class="manager-page">
-        manager
+        manage
     </div>
 </template>
 
 <script>
 export default {
-    name:"manager",
+    name:"manage",
     data:function(){
         return {}
     },
@@ -17,5 +17,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "@/style/views/manager.scss";
+@import "@/style/views/manage.scss";
 </style>

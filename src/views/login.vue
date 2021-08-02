@@ -109,7 +109,7 @@ export default {
                 codeKey: ""
             },
             smsCode: "",
-            time: 60,
+            time: 30,
             isDisabled: false,
             buttonName: "获取",
             rules: {
@@ -143,9 +143,8 @@ export default {
             }
         },
         async submitForm() {
-            if (localStorage.getItem("Sanye-Authorization")) {
-                localStorage.removeItem("Sanye-Authorization");
-            }
+            localStorage.removeItem("Sanye-Authorization");
+            this.$store.commit("resetAllStatus");
             this.$refs['ruleForm'].validate(async (valid) => {
                 if (valid) {
                     let params = this.ruleForm;
@@ -153,6 +152,7 @@ export default {
                     if (res.code == 200) {
                         localStorage.setItem("Sanye-Authorization", res.data.token);
                         this.$message.success(res.message);
+                        this.$store.dispatch("getRoleRouter");
                         this.$store.commit("setLoginStatus", true);
                         this.$router.push({
                             path: "/"
@@ -179,7 +179,7 @@ export default {
                         --me.time;
                         if (me.time < 0) {
                             me.buttonName = "获取";
-                            me.time = 60;
+                            me.time = 30;
                             me.isDisabled = false;
                             window.clearInterval(interval);
                         }
