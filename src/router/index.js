@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router';
 import store from "../store/store";
+import { Message } from "element-ui";
 Vue.use(Router)
 const home = () => { return import ("@/views/home") };
 const manage = () => { return import ("@/views/manage") };
@@ -93,6 +94,11 @@ export function resetRouter() {
  * 添加全局的路由守卫
  */
 router.beforeEach(async(to, from, next) => {
+    if (to.path == '/login' && store.state.loginStatus) {
+        Message.error("请先注销此次登录");
+        next('/');
+        return;
+    }
     if (store.state.loginStatus && !store.getters.getHasGetPermissionRoutes) {
         await store.dispatch("getRoleRouter");
         next({...to, replace: true });

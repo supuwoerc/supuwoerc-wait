@@ -1,5 +1,5 @@
 <template>
-  <div :class="{'panel-component':true,'shadow':needShadow}">
+  <div :class="{'panel-component':true,'shadow':needShadow,'radius':needRadius}">
       <slot></slot>
   </div>
 </template>
@@ -12,6 +12,11 @@ export default {
             type:Boolean,
             default:true,
             desc:"添加阴影"
+        },
+        needRadius:{
+            type:Boolean,
+            default:true,
+            desc:"添加圆角"
         }
     },
     data:function(){

@@ -28,6 +28,9 @@ import {
     Upload,
     Form,
     FormItem,
+    Tabs,
+    TabPane,
+    InfiniteScroll,
     Image
 } from 'element-ui';
 
@@ -62,6 +65,9 @@ const element = {
         Vue.use(Drawer)
         Vue.use(Tooltip)
         Vue.use(Popover)
+        Vue.use(Tabs)
+        Vue.use(TabPane)
+        Vue.use(InfiniteScroll)
         Vue.use(Col)
     }
 }

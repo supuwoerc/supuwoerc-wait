@@ -24,7 +24,7 @@ export default {
         handleNodeClick(data) {
             if(data&&data[this.defaultProps.children].length==0){
                 this.$router.push({
-                    path:`${data.router}`
+                    path:`${data.path}`
                 })
                 this.drawer = false;
             }

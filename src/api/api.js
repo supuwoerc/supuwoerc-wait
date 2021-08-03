@@ -16,3 +16,7 @@ export const getDefaultMenus = () => axios_get("/menu/defaultMenu");
 export const getMenus = () => axios_get("/menu/currentUserMenu");
 //发送激活账户邮件
 export const activeAccount = (p) => axios_post(`/user/reActiveUser/${p}`);
+//查询角色选项(option用途)
+export const getRoleList = () => axios_get(`/role/list`);
+//查询用户列表
+export const getUserList = (p) => axios_get(`/user/userList`, p);
