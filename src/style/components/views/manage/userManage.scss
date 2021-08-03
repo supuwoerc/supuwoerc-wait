@@ -1,34 +1,101 @@
-.manage-user {
+.manage-user-page {
     height: 100%;
-    >>>.el-select .el-input {
-        width: 108px;
+    >>>.el-dialog.is-fullscreen {
+        width: 100% !important;
     }
-    .search-area {
+    .manage-user {
+        height: 100%;
         display: flex;
-        align-items: center;
-        justify-content: center;
-        //电脑样式,一般不写
-        @media screen and(min-width: 1200px) {
-            >div {
-                width: 600px;
+        align-items: flex-start;
+        justify-content: space-between;
+        >>>.el-select .el-input {
+            width: 108px;
+        }
+        >div {
+            height: 100%;
+            width: calc(50% - 10px);
+            &.ulist {
+                flex-grow: 0;
+                @media screen and(max-width: 768px) {
+                    width: 100%;
+                }
+                .search-area {
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                    >div {
+                        width: 100%;
+                    }
+                }
+                .infinite-list {
+                    overflow-y: auto;
+                    height: calc(100% - 110px);
+                    margin: 15px 0;
+                    padding: 0;
+                    li {
+                        list-style: none;
+                        margin-bottom: 12px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        padding: 4px;
+                        border-radius: 4px;
+                        cursor: pointer;
+                        &:hover {
+                            background: #f2f2f2;
+                            >.left>span {
+                                color: #409EFF;
+                            }
+                        }
+                        >.left {
+                            display: flex;
+                            align-items: center;
+                            justify-content: flex-start;
+                            >span {
+                                margin-left: 8px;
+                                font-weight: bold;
+                                font-size: 16px;
+                                &.active {
+                                    color: #409EFF;
+                                }
+                            }
+                        }
+                        .right {
+                            display: flex;
+                            align-items: center;
+                            justify-content: flex-start;
+                            >.el-tag {
+                                +.el-tag {
+                                    margin-left: 4px;
+                                }
+                            }
+                        }
+                        &:last-of-type {
+                            margin-bottom: 0;
+                        }
+                    }
+                }
+            }
+            &.udetail {
+                flex-grow: 0;
+                position: relative;
+                box-sizing: border-box;
+                &::before {
+                    content: " ";
+                    position: absolute;
+                    width: 1px;
+                    height: 100%;
+                    left: -10px;
+                    top: 0;
+                    background: #eeeeee;
+                }
+                @media screen and(max-width: 768px) {
+                    display: none;
+                    &::before {
+                        display: none;
+                    }
+                }
             }
         }
-        //平板样式
-        @media screen and(max-width: 1199px) and (min-width: 768px) {
-            >div {
-                width: 500px;
-            }
-        }
-        //手机样式
-        @media screen and(max-width: 768px) {
-            >div {
-                width: 100%;
-            }
-        }
-    }
-    .infinite-list {
-        overflow-y: auto;
-        height: calc(100% - 70px);
-        margin: 15px 0;
     }
 }

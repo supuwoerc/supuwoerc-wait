@@ -31,6 +31,9 @@ import {
     Tabs,
     TabPane,
     InfiniteScroll,
+    Avatar,
+    Empty,
+    Tag,
     Image
 } from 'element-ui';
 
@@ -41,8 +44,11 @@ const element = {
         Vue.use(Container)
         Vue.use(Main)
         Vue.use(Image)
+        Vue.use(Empty)
+        Vue.use(Tag)
         Vue.use(Form)
         Vue.use(FormItem)
+        Vue.use(Avatar)
         Vue.use(Footer)
         Vue.use(Option)
         Vue.use(Switch)
