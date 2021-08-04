@@ -11,7 +11,7 @@
                     <el-button slot="append" icon="el-icon-search" @click="doRefresh()"></el-button>
                 </el-input>
             </div>
-            <ul class="infinite-list" v-infinite-scroll="load" infinite-scroll-disabled="disabled">
+            <ul v-loading="loading" class="infinite-list" v-infinite-scroll="load" infinite-scroll-disabled="disabled">
                 <li @click="getUserDetail(item)" v-for="(item,index) in listData" :key="index" class="infinite-list-item">
                     <div class="left">
                         <el-avatar shape="square" :size="'large'" :src="squareUrl"></el-avatar>
@@ -24,7 +24,10 @@
             </ul>
         </div>
         <div class="udetail" ref="udetail">
-            <el-empty description="点击选择人员" :image-size="200"></el-empty>
+            <div v-if="currentUser.id" v-loading="loadingDetail">
+
+            </div>
+            <el-empty v-else description="点击选择人员" :image-size="200"></el-empty>
         </div>
     </div>
     <el-dialog title="账户详情" fullscreen style="width:100%;" :visible.sync="dialogFormVisible">
@@ -51,6 +54,7 @@ export default {
             squareUrl: "https://cube.elemecdn.com/9/c2/f0ee8a3c7c9638a54940382568c9dpng.png",
             noMore: false,
             loading: false,
+            loadingDetail: false,
             dialogFormVisible: false,
             role: '',
             keyWord: '',

@@ -31,6 +31,7 @@ import {
     Tabs,
     TabPane,
     InfiniteScroll,
+    Loading,
     Avatar,
     Empty,
     Tag,
@@ -53,6 +54,7 @@ const element = {
         Vue.use(Option)
         Vue.use(Switch)
         Vue.use(OptionGroup)
+        Vue.use(Loading)
         Vue.use(Input)
         Vue.use(Tree)
         Vue.use(Dialog)
