@@ -7,7 +7,8 @@
                     <div class="title">
                         <span>个人信息</span>
                         <div>
-                            <i class="iconfont icon-setting" title="编辑"></i>
+                            <i class="iconfont icon-setting" @click="editPersonInfo=true" v-show="!editPersonInfo" title="编辑"></i>
+                            <i class="iconfont icon-check" v-show="editPersonInfo" title="保存"></i>
                             <i class="iconfont icon-logout" @click="logOut()" title="注销"></i>
                         </div>
                     </div>
@@ -17,24 +18,26 @@
                             <el-button size="small">上传</el-button>
                         </div>
                         <div class="right">
-                            <el-form :disabled="!editPersonInfo" label-position="left" size="small" label-width="55px">
+                            <el-form  :model="personInfo" label-position="left" size="small" label-width="55px">
                                 <el-form-item>
                                     <div slot="label" class="form-label">
                                         账号:
                                     </div>
-                                    <el-input v-model="personInfo.name"></el-input>
+                                    <el-input v-model="personInfo.username" disabled></el-input>
                                 </el-form-item>
                                 <el-form-item>
                                     <div slot="label" class="form-label">
                                         昵称:
                                     </div>
-                                    <el-input v-model="personInfo.name"></el-input>
+                                    <el-input v-model="personInfo.nickname" :disabled="!editPersonInfo"></el-input>
                                 </el-form-item>
                                 <el-form-item>
                                     <div slot="label" class="form-label">
                                         性别:
                                     </div>
-                                    <el-input v-model="personInfo.name"></el-input>
+                                    <el-select v-model="personInfo.gender" placeholder="" :disabled="!editPersonInfo">
+                                        <el-option v-for="(item,index) in genderOptions" :key="index" :label="item.label" :value="item.value"></el-option>
+                                    </el-select>
                                 </el-form-item>
                             </el-form>
                         </div>
@@ -134,7 +137,17 @@ export default {
     data: function () {
         return {
             personInfo: {},
-            editPersonInfo:false, 
+            editPersonInfo: false,
+            genderOptions:[{
+                label:"保密",
+                value:0
+            },{
+                label:"男",
+                value:1
+            },{
+                label:"女",
+                value:2
+            }]
         }
     },
     created() {
