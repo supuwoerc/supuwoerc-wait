@@ -98,6 +98,18 @@ export function axios_post(url, data, header = {}) {
         }
     )
 }
+export function upload_post(url, data) {
+    return new Promise(
+        (resolve, reject) => {
+            axios.post(url, data, { headers: { "Content-Type": "mutlipart/form-data" } })
+                .then(res => {
+                    resolve(res.data)
+                }).catch(err => {
+                    reject(err.data)
+                })
+        }
+    )
+}
 
 export function axios_put(url, data, header = {}) {
     return new Promise(

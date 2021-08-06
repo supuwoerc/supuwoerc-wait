@@ -14,7 +14,11 @@
             <ul v-loading="loading" class="infinite-list" v-infinite-scroll="load" infinite-scroll-disabled="disabled">
                 <li @click="getUserDetail(item)" v-for="(item,index) in listData" :key="index" class="infinite-list-item">
                     <div class="left">
-                        <el-avatar shape="square" :size="'large'" :src="squareUrl"></el-avatar>
+                        <el-image style="width: 40px;height:40px;border-radius:6px;" :src="$getServerSource(item.avatar)" fit="fill">
+                            <div slot="error" class="image-slot user-case">
+                                {{item.nickname.substr(0,1)}}
+                            </div>
+                        </el-image>
                         <span :class="{active:currentUser.id==item.id}">{{item.nickname}}</span>
                     </div>
                     <div class="right">
@@ -32,7 +36,7 @@
     </div>
     <el-dialog title="账户详情" fullscreen style="width:100%;" :visible.sync="dialogFormVisible">
         <el-form>
-            
+
         </el-form>
         <div slot="footer" class="dialog-footer">
             <el-button @click="dialogFormVisible = false">取 消</el-button>
@@ -77,8 +81,8 @@ export default {
         role: function (newVal) {
             this.doRefresh();
         },
-        currentUser(newVal){
-            if(newVal&&newVal.id){
+        currentUser(newVal) {
+            if (newVal && newVal.id) {
                 console.log("查询人员详情")
             }
         }
@@ -93,9 +97,9 @@ export default {
         },
         getUserDetail(item) {
             let isMobile = document.documentElement.clientWidth <= 768;
-            this.currentUser=item;
-            if(isMobile){
-                this.dialogFormVisible=true;
+            this.currentUser = item;
+            if (isMobile) {
+                this.dialogFormVisible = true;
             }
         },
         doRefresh() {

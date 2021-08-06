@@ -17,6 +17,7 @@ import highlight from 'highlight';
 Vue.use(highlight);
 //注册自定义指令
 import directives from "@/directive/directives";
+import { getServerSource } from "./utils/index";
 directives(Vue);
 //注册全局组件
 import global from "@/global/global";
@@ -30,13 +31,14 @@ import {
     Notification,
     Message
 } from 'element-ui';
-Vue.prototype.$loading = Loading.service
-Vue.prototype.$msgbox = MessageBox
-Vue.prototype.$alert = MessageBox.alert
-Vue.prototype.$confirm = MessageBox.confirm
-Vue.prototype.$prompt = MessageBox.prompt
-Vue.prototype.$notify = Notification
-Vue.prototype.$message = Message
+Vue.prototype.$loading = Loading.service;
+Vue.prototype.$msgbox = MessageBox;
+Vue.prototype.$alert = MessageBox.alert;
+Vue.prototype.$confirm = MessageBox.confirm;
+Vue.prototype.$prompt = MessageBox.prompt;
+Vue.prototype.$notify = Notification;
+Vue.prototype.$message = Message;
+Vue.prototype.$getServerSource = getServerSource;
 Vue.config.productionTip = false;
 
 new Vue({
