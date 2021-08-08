@@ -48,7 +48,17 @@ export const defaultRouter = [{
     meta: {
         pageName: "个人信息",
         keepAlive: false
-    }
+    },
+    children: []
+}, {
+    path: '/newArticle',
+    name: 'newArticle',
+    component: newArticle,
+    meta: {
+        pageName: "编辑",
+        keepAlive: false,
+        role: ['admin']
+    },
 }, {
     path: "*",
     component: notFound,
@@ -67,16 +77,7 @@ export const asyncRouter = [{
         keepAlive: false,
         role: ['admin']
     },
-    children: [{
-        path: '/newArticle',
-        name: 'newArticle',
-        component: newArticle,
-        meta: {
-            pageName: "编辑",
-            keepAlive: false,
-            role: ['admin']
-        },
-    }]
+    children: []
 }];
 //https://github.com/vuejs/vue-router/issues/1234
 const createRouter = () =>

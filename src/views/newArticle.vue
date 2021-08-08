@@ -1,11 +1,21 @@
 <template>
 <div class="new-article">
-    <markdownEditor />
-    <el-upload class="upload-demo" ref="upload" :action="uploadAction" :on-preview="handlePreview" :on-remove="handleRemove" :file-list="fileList" :auto-upload="false">
-        <el-button slot="trigger" size="small" type="primary">选取文件</el-button>
-        <el-button style="margin-left: 10px;" size="small" type="success" @click="submitUpload">上传到服务器</el-button>
-        <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
-    </el-upload>
+    <div class="btn-bar">
+        <div class="left">
+            <el-select v-model="tags" style="width:156px;" multiple collapse-tags placeholder="关联标签">
+                <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                </el-option>
+            </el-select>
+            <i class="iconfont icon-plus-circle-fill" title="新增"></i>
+        </div>
+        <div class="right">
+            <el-button type="primary">上传</el-button>
+            <el-button type="success">发布</el-button>
+        </div>
+    </div>
+    <div class="editor">
+        <markdownEditor />
+    </div>
 </div>
 </template>
 
@@ -17,7 +27,24 @@ export default {
     },
     data: function () {
         return {
-            uploadAction:"/blog/uploadFile/upload",
+            options: [{
+                value: '选项1',
+                label: '黄金糕'
+            }, {
+                value: '选项2',
+                label: '双皮奶'
+            }, {
+                value: '选项3',
+                label: '蚵仔煎'
+            }, {
+                value: '选项4',
+                label: '龙须面'
+            }, {
+                value: '选项5',
+                label: '北京烤鸭'
+            }],
+            tags: [],
+            uploadAction: "/blog/uploadFile/upload",
             fileList: [{
                 name: "123",
                 url: "123",
@@ -40,5 +67,6 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import "@/style/views/newArticel.scss";
 </style>

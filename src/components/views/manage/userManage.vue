@@ -16,7 +16,7 @@
                     <div class="left">
                         <el-image style="width: 40px;height:40px;border-radius:6px;" :src="$getServerSource(item.avatar)" fit="fill">
                             <div slot="error" class="image-slot user-case">
-                                {{item.nickname.substr(0,1)}}
+                                {{(item&&item.nickname)?item.nickname.substr(0,1):''}}
                             </div>
                         </el-image>
                         <span :class="{active:currentUser.id==item.id}">{{item.nickname}}</span>
@@ -55,7 +55,6 @@ export default {
     name: "userMange",
     data: function () {
         return {
-            squareUrl: "https://cube.elemecdn.com/9/c2/f0ee8a3c7c9638a54940382568c9dpng.png",
             noMore: false,
             loading: false,
             loadingDetail: false,

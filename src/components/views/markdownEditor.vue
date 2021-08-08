@@ -5,7 +5,6 @@
       ref="editor"
       @imgAdd="$imgAdd"
       @change="change"
-      style="min-height: 600px"
     />
   </div>
 </template>
@@ -50,5 +49,13 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+.markdown-editor{
+  width: 100%;
+  height: 100%;
+  >div{
+      width: 100%;
+  height: 100%;
+  }
+}
 </style>
