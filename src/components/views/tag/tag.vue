@@ -19,7 +19,6 @@
         </div>
     </draggable>
 </div>
-</div>
 </template>
 
 <script>
