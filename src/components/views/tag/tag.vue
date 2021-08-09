@@ -14,7 +14,7 @@
             <span>添加/保存</span>
             <div>
                 <el-button type="primary" size="mini" icon="el-icon-plus" circle @click="add()"></el-button>
-                <el-button type="success" size="mini" icon="el-icon-check" circle @click="save()"></el-button>
+                <el-button type="primary" size="mini" icon="el-icon-check" circle @click="save()"></el-button>
             </div>
         </div>
     </draggable>

@@ -3,7 +3,7 @@
     <div class="btn-bar">
         <div class="left">
             <el-select v-model="tags" style="width:156px;" multiple collapse-tags placeholder="关联标签">
-                <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                <el-option v-for="item in options" :key="item.id" :label="item.tag_name" :value="item.id">
                 </el-option>
             </el-select>
             <i class="iconfont icon-wrench-fill" @click="dialogFormVisible=true" title="新增"></i>
@@ -17,13 +17,14 @@
         <markdownEditor />
     </div>
     <el-dialog title="标签" :visible.sync="dialogFormVisible">
-        <tag/>
+        <tag />
     </el-dialog>
 
 </div>
 </template>
 
 <script>
+import {getTags} from "../api/api";
 export default {
     name: "newArticle",
     components: {
@@ -32,23 +33,8 @@ export default {
     },
     data: function () {
         return {
-            dialogFormVisible:true,
-            options: [{
-                value: '选项1',
-                label: '黄金糕'
-            }, {
-                value: '选项2',
-                label: '双皮奶'
-            }, {
-                value: '选项3',
-                label: '蚵仔煎'
-            }, {
-                value: '选项4',
-                label: '龙须面'
-            }, {
-                value: '选项5',
-                label: '北京烤鸭'
-            }],
+            dialogFormVisible: false,
+            options: [],
             tags: [],
             uploadAction: "/blog/uploadFile/upload",
             fileList: [{
@@ -57,9 +43,17 @@ export default {
             }]
         };
     },
-    created() {},
+    created() {
+        this.getTags();
+    },
     mounted() {},
     methods: {
+        async getTags() {
+            let res = await getTags();
+            if (res && res.code == 200) {
+                this.$set(this, 'options', res.data);
+            }
+        },
         submitUpload() {
             this.$refs.upload.submit();
         },
