@@ -28,3 +28,9 @@ export const getCurrentUserInfo = () => axios_get(`/user/info`);
 export const uploadAvatar = p => upload_post(`/user/upload/avatar`, p);
 //更新个人信息
 export const updateMineInfo = p => axios_post(`/user/updateUserInfo`, p);
+//查询标签
+export const getTags = () => axios_get(`/tags/list`);
+//保存全部标签
+export const saveTags = p => axios_post(`/tags/save`, p);
+//删除一个标签
+export const deleteTag = p => axios_delete(`/tags/delete`, p);

@@ -100,6 +100,7 @@ router.beforeEach(async(to, from, next) => {
         next('/');
         return;
     }
+    //动态添加权限路由
     if (store.state.loginStatus && !store.getters.getHasGetPermissionRoutes) {
         await store.dispatch("getRoleRouter");
         next({...to, replace: true });

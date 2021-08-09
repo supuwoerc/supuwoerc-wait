@@ -6,16 +6,20 @@
                 <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
                 </el-option>
             </el-select>
-            <i class="iconfont icon-plus-circle-fill" title="新增"></i>
+            <i class="iconfont icon-wrench-fill" @click="dialogFormVisible=true" title="新增"></i>
         </div>
         <div class="right">
-            <el-button type="primary">上传</el-button>
-            <el-button type="success">发布</el-button>
+            <el-button type="info" icon="el-icon-s-promotion" circle></el-button>
+            <el-button type="primary" icon="el-icon-check" circle></el-button>
         </div>
     </div>
     <div class="editor">
         <markdownEditor />
     </div>
+    <el-dialog title="标签" :visible.sync="dialogFormVisible">
+        <tag/>
+    </el-dialog>
+
 </div>
 </template>
 
@@ -24,9 +28,11 @@ export default {
     name: "newArticle",
     components: {
         markdownEditor: () => import("@/components/views/markdownEditor"),
+        tag: () => import("@/components/views/tag/tag"),
     },
     data: function () {
         return {
+            dialogFormVisible:true,
             options: [{
                 value: '选项1',
                 label: '黄金糕'

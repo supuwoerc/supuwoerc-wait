@@ -1,7 +1,7 @@
 {
     "name": "supuwoerc-wait",
     "version": "1.0.0",
-    "description": "A Vue.js project",
+    "description": "自己做的一个破玩意...",
     "author": "张启蒙 <2293172479@qq.com>",
     "private": true,
     "scripts": {
@@ -19,6 +19,7 @@
         "node-sass": "^4.14.1",
         "vue": "^2.5.2",
         "vue-router": "^3.0.1",
+        "vuedraggable": "^2.14.1",
         "vuex": "^3.6.0",
         "vuex-along": "^1.2.13",
         "wowjs": "^1.1.3"
