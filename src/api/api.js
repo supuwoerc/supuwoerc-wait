@@ -7,9 +7,9 @@ export const getCaptcha = () => axios_get("/captcha");
 //登录
 export const doLogin = p => postServerData("/login/submit", p, { "Content-Type": "application/x-www-form-urlencoded" });
 //注册
-export const doRegister = p => postServerData("/register", p);
+export const doRegister = p => axios_put("/register", p);
 //注销登录
-export const logOut = () => postServerData("/logout/submit");
+export const logOut = () => axios_post("/logout/submit");
 //获取角色
 export const getRoles = () => axios_get("/user/role");
 //获取默认菜单
