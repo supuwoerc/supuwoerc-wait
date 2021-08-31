@@ -117,5 +117,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@/style/views/tag.scss";
+@import "@/style/components/views/tag/tag.scss";
 </style>

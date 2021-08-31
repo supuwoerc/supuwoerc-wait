@@ -1,0 +1,49 @@
+@import "../../../../style/theme/themes";
+@import "../../../../style/theme/mixin";
+.menu-item {
+    height: 100%;
+    box-sizing: border-box;
+    padding: 0 10px;
+    .title {
+        height: 40px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        &::before {
+            content: " ";
+            background: #409EFF;
+            width: 5px;
+            height: 1.1em;
+            position: absolute;
+            left: 0px;
+            top: 50%;
+            transform: translateY(-45%);
+        }
+        span {
+            font-size: 18px;
+            font-weight: bold;
+            padding-left: 10px;
+            @include font_color(whiteColor);
+        }
+        >div {
+            i {
+                cursor: pointer;
+                font-size: 22px;
+                font-weight: bold;
+                @include font_color(whiteColor);
+                +i {
+                    margin-left: 6px;
+                }
+            }
+        }
+    }
+    .info {
+        height: calc(100% - 40px);
+        box-sizing: border-box;
+        padding-bottom: 10px;
+        padding-top: 0px;
+        &.calendar-card {
+        }
+    }
+}

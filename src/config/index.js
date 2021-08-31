@@ -1,3 +1,3 @@
 export const config = {
-    serverUrl: "http://localhost:8888/sanye"
+    serverUrl: "http://localhost:10086/sanye"
 }

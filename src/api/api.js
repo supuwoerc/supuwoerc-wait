@@ -34,3 +34,5 @@ export const getTags = () => axios_get(`/tags/list`);
 export const saveTags = p => axios_post(`/tags/save`, p);
 //删除一个标签
 export const deleteTag = p => axios_delete(`/tags/delete`, p);
+//上传文章封面(不会更新文章信息)
+export const uploadCoverImg = p => upload_post(`/article/upload/cover`, p);

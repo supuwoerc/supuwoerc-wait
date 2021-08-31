@@ -10,7 +10,7 @@ module.exports = {
         proxyTable: {
             // 代理规则
             '/sanye': {
-                target: 'http://localhost:8888/sanye/',
+                target: 'http://localhost:10086/sanye/',
                 // https请求需要该设置
                 secure: false,
                 // 必须设置该项
