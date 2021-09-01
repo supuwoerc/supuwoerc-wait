@@ -25,7 +25,7 @@
                 <el-input v-model="form.title" autocomplete="off"></el-input>
             </el-form-item>
             <el-form-item label="封面图片" label-width="80px">
-                <el-upload :class="{'avatar-uploader':true,'hide':hideUploader}" list-type="picture-card" :limit="1" :on-remove="handleRemove"  action="" :http-request="postCover" :before-upload="beforeCoverUpload">
+                <el-upload :class="{'avatar-uploader':true,'hide':hideUploader}" list-type="picture-card" :limit="1" :on-remove="handleRemove" action="" :http-request="postCover" :before-upload="beforeCoverUpload">
                     <i class="el-icon-plus"></i>
                 </el-upload>
             </el-form-item>
@@ -58,6 +58,7 @@ export default {
             form: {
                 title: "",
                 cover_url: "",
+                cover_id: ""
             },
             fileList: [{
                 name: "123",
@@ -73,9 +74,9 @@ export default {
             }
         },
     },
-    computed:{
-        hideUploader:function(){
-            return this.form.cover_url!='';
+    computed: {
+        hideUploader: function () {
+            return this.form.cover_url != '';
         }
     },
     created() {
@@ -108,11 +109,11 @@ export default {
             let res = await uploadCoverImg(p);
             if (res && res.code == 200) {
                 this.form.cover_url = res.data.url;
+                this.form.cover_id = res.data.id;
             }
         },
         handleRemove(file, fileList) {
-            console.log(file, fileList);
-            this.form.cover_url="";
+            this.form.cover_url = "";
         }
     },
 };
