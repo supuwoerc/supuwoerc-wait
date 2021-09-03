@@ -33,7 +33,7 @@
                     <el-form-item>
                         <el-row type="flex" justify="space-between" align="middle">
                             <el-col :span="8">
-                                <el-button type="primary" @click="submitForm()">提交</el-button>
+                                <el-button type="primary" v-loading="loading" @click="submitForm()">提交</el-button>
                             </el-col>
                             <el-col :span="10">
                                 <div class="tips-register" @click="reSendEmail()">
@@ -111,6 +111,7 @@ export default {
             smsCode: "",
             time: 30,
             isDisabled: false,
+            loading: false,
             buttonName: "获取",
             rules: {
                 username: [{
@@ -148,7 +149,9 @@ export default {
             this.$refs['ruleForm'].validate(async (valid) => {
                 if (valid) {
                     let params = this.ruleForm;
+                    this.loading = true;
                     let res = await doLogin(params);
+                    this.loading = false;
                     if (res.code == 200) {
                         localStorage.setItem("Sanye-Authorization", res.data.token);
                         this.$message.success(res.message);
@@ -175,7 +178,7 @@ export default {
                 if (valid) {
                     me.isDisabled = true;
                     let interval = window.setInterval(function () {
-                        me.buttonName = me.time+"s";
+                        me.buttonName = me.time + "s";
                         --me.time;
                         if (me.time < 0) {
                             me.buttonName = "获取";
@@ -185,7 +188,7 @@ export default {
                         }
                     }, 1000);
                     let res = await activeAccount(me.ruleForm.username);
-                    if(res&&res.code==200){
+                    if (res && res.code == 200) {
                         this.$message.success(res.message);
                     }
                 } else {

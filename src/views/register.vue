@@ -34,7 +34,7 @@
                         </el-row>
                     </el-form-item>
                     <el-form-item>
-                        <el-button type="primary" @click="submitForm()">提交</el-button>
+                        <el-button type="primary" v-loading="loading" @click="submitForm()">提交</el-button>
                     </el-form-item>
                 </el-form>
             </div>
@@ -93,7 +93,7 @@ export default {
             callback();
         };
         return {
-            dialogVisible:false,
+            dialogVisible: false,
             ruleForm: {
                 username: "",
                 password: "",
@@ -102,6 +102,7 @@ export default {
                 codeKey: "",
             },
             smsCode: "",
+            loading: false,
             rules: {
                 username: [{
                     validator: checkUsername,
@@ -143,11 +144,13 @@ export default {
             this.$refs['ruleForm'].validate(async (valid) => {
                 if (valid) {
                     let params = this.ruleForm;
+                    this.loading = true;
                     let res = await doRegister(params);
+                    this.loading = false;
                     if (res.code == 200) {
                         this.$message.success(res.message);
                         this.resetForm();
-                        this.dialogVisible=true;
+                        this.dialogVisible = true;
                     }
                     this.getCaptchaCode();
                 } else {
