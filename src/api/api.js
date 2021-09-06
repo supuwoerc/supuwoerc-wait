@@ -36,3 +36,7 @@ export const saveTags = p => axios_post(`/tags/save`, p);
 export const deleteTag = p => axios_delete(`/tags/delete`, p);
 //上传文章封面(不会更新文章信息)
 export const uploadCoverImg = p => upload_post(`/article/upload/cover`, p);
+//删除文章封面(不会更新文章信息)
+export const deleteCoverImg = p => axios_delete(`/article/delete/cover`,p);
+//保存文章(新增或者修改)
+export const saveArticle = p => axios_put("/article/save", p);

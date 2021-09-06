@@ -14,7 +14,7 @@
         </div>
     </div>
     <div class="editor">
-        <markdownEditor />
+        <markdownEditor @contentChange="contentChange" />
     </div>
     <el-dialog title="标签" :visible.sync="dialogFormVisible">
         <tag />
@@ -31,8 +31,8 @@
             </el-form-item>
         </el-form>
         <div slot="footer" class="dialog-footer">
-            <el-button @click="dialogInfoVisible = false">取 消</el-button>
-            <el-button type="primary" @click="dialogInfoVisible = false">确 定</el-button>
+            <el-button @click="dialogInfoVisible = false">取消</el-button>
+            <el-button type="primary" v-loading="loading" @click="save()">发布</el-button>
         </div>
     </el-dialog>
 </div>
@@ -41,7 +41,9 @@
 <script>
 import {
     getTags,
-    uploadCoverImg
+    uploadCoverImg,
+    deleteCoverImg,
+    saveArticle
 } from "../api/api";
 export default {
     name: "newArticle",
@@ -53,12 +55,15 @@ export default {
         return {
             dialogFormVisible: false,
             dialogInfoVisible: false,
+            loading:false,
             options: [],
             tags: [],
             form: {
+                id: "",
                 title: "",
                 cover_url: "",
-                cover_id: ""
+                cover_id: "",
+                content: ""
             },
             fileList: [{
                 name: "123",
@@ -84,6 +89,9 @@ export default {
     },
     mounted() {},
     methods: {
+        contentChange(data) {
+            this.form.content = data.md;
+        },
         async getTags() {
             let res = await getTags();
             if (res && res.code == 200) {
@@ -112,9 +120,24 @@ export default {
                 this.form.cover_id = res.data.id;
             }
         },
-        handleRemove(file, fileList) {
+        //保存文章
+        async save() {
+            this.loading = true;
+            let res = await saveArticle(this.form);
+            this.loading = false;
+            if (res.code == 200) {
+                this.$message.success(res.message);
+                this.dialogInfoVisible = false;
+                //this.$router.go(-1);
+            }
+        },
+        async handleRemove(file, fileList) {
+            let res = await deleteCoverImg({id:this.form.cover_id});
             this.form.cover_url = "";
             this.form.cover_id = "";
+            if (res.code == 200) {
+                this.$message.success(res.message);
+            }
         }
     },
 };

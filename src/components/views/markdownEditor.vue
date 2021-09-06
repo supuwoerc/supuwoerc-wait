@@ -30,6 +30,10 @@ export default {
     // render 为 markdown 解析后的结果[html]
     change(value, render) {
       this.content2html = render;
+      this.$emit("contentChange",{
+        md:value,
+        html:render
+      })
     },
     // 将图片上传到服务器，返回地址替换到md中
     $imgAdd(pos, $file) {
