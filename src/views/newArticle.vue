@@ -123,7 +123,10 @@ export default {
         //保存文章
         async save() {
             this.loading = true;
-            let res = await saveArticle(this.form);
+            let res = await saveArticle({
+                article:this.form,
+                tags:this.tags
+            });
             this.loading = false;
             if (res.code == 200) {
                 this.$message.success(res.message);
@@ -131,6 +134,7 @@ export default {
                 //this.$router.go(-1);
             }
         },
+        //移除封面
         async handleRemove(file, fileList) {
             let res = await deleteCoverImg({id:this.form.cover_id});
             this.form.cover_url = "";
