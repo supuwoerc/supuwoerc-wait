@@ -40,3 +40,5 @@ export const uploadCoverImg = p => upload_post(`/article/upload/cover`, p);
 export const deleteCoverImg = p => axios_delete(`/article/delete/cover`,p);
 //保存文章(新增或者修改)
 export const saveArticle = p => axios_put("/article/save", p);
+//查询文章列表
+export const getArticleList = p => axios_get(`/article/list`, p);
