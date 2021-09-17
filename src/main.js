@@ -22,6 +22,9 @@ directives(Vue);
 //注册全局组件
 import global from "@/global/global";
 global(Vue);
+//瀑布流
+import VirtualCollection from 'vue-virtual-collection';
+Vue.use(VirtualCollection);
 /**
  * 注入element相关全局组件
  */

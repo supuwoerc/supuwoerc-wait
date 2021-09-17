@@ -76,6 +76,9 @@
                     font-size: 16px;
                     font-weight: 700;
                 }
+                >>>.el-input.is-disabled .el-input__inner{
+                     @include font_color(whiteColor);
+                }
             }
         }
     }

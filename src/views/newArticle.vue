@@ -131,7 +131,7 @@ export default {
             if (res.code == 200) {
                 this.$message.success(res.message);
                 this.dialogInfoVisible = false;
-                //this.$router.go(-1);
+                this.$router.go(-1);
             }
         },
         //移除封面

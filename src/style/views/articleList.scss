@@ -1,0 +1,34 @@
+@import "../style/theme/themes";
+@import "../style/theme/mixin";
+.article-list-page {
+    width: 100%;
+    height: 100%;
+    .list-container{
+        height: calc(100% - 60px);
+        margin: 60px auto;
+        margin-bottom: 0;
+        >>>.vue-virtual-collection{
+            &::-webkit-scrollbar {
+                display: none;
+            }
+        }
+    }
+    //电脑样式,一般不写
+    @media screen and(min-width: 1200px) {
+        .list-container{
+            max-width: 1200px;
+        }
+    }
+    //平板样式
+    @media screen and(max-width: 1199px) {
+        .list-container{
+            max-width: 100%;
+        }
+    }
+    //手机样式
+    @media screen and(max-width: 768px) {
+        .list-container{
+            max-width: 100%;
+        }
+    }
+}

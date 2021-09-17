@@ -6,7 +6,9 @@
             <router-link to="newArticle">
                 <i class="iconfont icon-plus-circle" title="新增"></i>
             </router-link>
-            <i class="iconfont icon-unorderedlist" title="更多"></i>
+            <router-link to="articleList">
+                <i class="iconfont icon-unorderedlist"  title="更多"></i>
+            </router-link>
         </div>
     </div>
     <div class="info article-card">
@@ -14,9 +16,9 @@
         </el-empty>
         <div v-else class="article-list">
             <div class="list-item" v-for="(item,index) in list" :key="index">
-                <span class="item-title">{{item.title}}</span>
-                <span class="update-time">{{item.update_time}}</span>
-            </div>             
+                <span class="item-title" @click="openDetail(item)">{{item.title}}</span>
+                <span class="update-time">{{dateFormat(item.update_time,"YYYY-MM-DD")}}</span>
+            </div>
         </div>
     </div>
 </div>
@@ -26,6 +28,7 @@
 import {
     getArticleList
 } from "@/api/api";
+import moment from "moment";
 export default {
     name: 'articleCard',
     components: {},
@@ -45,12 +48,21 @@ export default {
         async getLast5Article() {
             let res = await getArticleList({
                 page: 1,
-                size: 5
+                size: 5,
+                isOverview:1
             });
             if (res && res.code == 200) {
                 this.list = res.data.records;
             }
-        }
+        },
+        //时间格式化
+        dateFormat(date,pat){
+            return moment(date).format(pat);
+        },
+        //打开文章详情
+        openDetail(item){
+            console.log(item)
+        },
     },
 
     destroyed() {},
