@@ -3,31 +3,92 @@
 .article-list-page {
     width: 100%;
     height: 100%;
-    .list-container{
+    overflow: hidden;
+    .list-container {
         height: calc(100% - 60px);
         margin: 60px auto;
         margin-bottom: 0;
-        >>>.vue-virtual-collection{
+        .infinite-list {
             &::-webkit-scrollbar {
                 display: none;
+            }
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            align-content: flex-start;
+            perspective: 900px;
+            .list-item {
+                flex-grow: 1;
+                flex-shrink: 1;
+                width: 25%;
+                min-width: 300px;
+                height: 200px;
+                max-width: 100%;
+                box-sizing: border-box;
+                padding: 12px;
+                margin-bottom: 12px;
+                .container {
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    align-items: flex-start;
+                    cursor: pointer;
+                    @include background_color(blockColor);
+                    backdrop-filter: blur(10px);
+                    background-size: cover;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    box-sizing: border-box;
+                    padding: 12px;
+                    position: relative;
+                    transition: all 0.2s;
+                    border-radius: 8px;
+                    box-shadow: 0 2px 10px 0 rgba(255,255,255,0.4);
+                    .title {
+                        font-size: 26px;
+                        @include font_color(whiteColor);
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        opacity: 1;
+                        width: 100%;
+                    }
+                    .info {
+                        font-size: 18px;
+                        opacity: 1;
+                        @include font_color(whiteColor);
+                    }
+                    .tags{
+                        .el-tag{
+                            margin-top: 4px;
+                            margin-right: 4px;
+                        }
+                    }
+                }
             }
         }
     }
     //电脑样式,一般不写
     @media screen and(min-width: 1200px) {
-        .list-container{
+        .list-container {
             max-width: 1200px;
         }
     }
     //平板样式
     @media screen and(max-width: 1199px) {
-        .list-container{
+        .list-container {
             max-width: 100%;
         }
     }
     //手机样式
     @media screen and(max-width: 768px) {
-        .list-container{
+        .list-container {
             max-width: 100%;
         }
     }

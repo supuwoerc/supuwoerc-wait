@@ -1,61 +1,82 @@
 <template>
 <div class="article-list-page">
     <div class="list-container">
-        <VirtualCollection :cellSizeAndPositionGetter="cellSizeAndPositionGetter" :scrollToBottomRange="50" v-on:scrolled-to-bottom="loadList" :collection="list" :height="height" :width="width">
-            <div slot="cell" slot-scope="props" style="border:1px solid red;height:100%;">123</div>
-        </VirtualCollection>
+        <el-input placeholder="关键字" v-model="keyWord" class="input-with-select">
+            <el-select style="width:108px;" v-model="tag" slot="prepend" placeholder="请选择">
+                <el-option label="全部" value=""></el-option>
+            </el-select>
+            <el-button slot="append" icon="el-icon-search"></el-button>
+        </el-input>
+        <div class="infinite-list" v-infinite-scroll="loadData" :infinite-scroll-distance="200" :infinite-scroll-disabled="disabled">
+            <div class="list-item" v-for="(item,index) in list" :key="index">
+                <div class="container" :style="{'background-image':`url(${$getServerSource(item.cover_url)})`}">
+                    <div class="title">{{item.title}}</div>
+                    <div class="info">{{item.create_time}}</div>
+                    <div class="tags">
+                        <el-tag theme="dark" v-for="(cell,cindex) in item.tagsList" size="small" :key="cindex">{{cell.tag_name}}</el-tag>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 </template>
 
 <script>
+import {
+    getArticleList
+} from '@/api/api';
 export default {
     name: "articleList",
-    components: {
-
-    },
+    components: {},
     data: function () {
         return {
-            list: new Array(40).fill(0).map((_, index) => ({
-                data: '#' + index
-            })),
-            width: 0,
-            height: 0,
-            col: 2,
+            list: [],
+            currentPage: 1,
+            pageSize: 10,
+            keyWord: "",
+            noMore: false,
+            loading: false,
+            tag: "",
         };
     },
-    created() {},
+    computed: {
+        disabled() {
+            return this.loading || this.noMore
+        }
+    },
+    created() {
+
+    },
     mounted() {
-        this.initCollection();
+
+    },
+    beforeDestroy() {
+
     },
     watch: {
 
     },
     methods: {
         //加载数据的方法
-        async loadList() {
-            console.log("loaddata")
-            this.list.push(Math.random().toFixed(2) * 100)
+        async loadData() {
+            this.loading = true;
+            let res = await getArticleList({
+                page: this.currentPage,
+                size: this.pageSize,
+                keyWord: this.keyWord,
+                isOverview: 1
+            });
+            this.loading = false;
+            this.currentPage++;
+            if (res && res.code == 200) {
+                this.list = this.list.concat(res.data.records);
+                if (res.data.current >= res.data.pages) {
+                    this.noMore = true;
+                    this.$message.info("没有更多了!");
+                }
+            }
         },
-        initCollection() {
-            this.width = document.querySelector('.list-container').offsetWidth;
-            this.height = document.querySelector('.list-container').offsetHeight;
-            this.col = this.width >= 1200 ? 4 : this.width <= 768 ? 2 : 3;
-        },
-        cellSizeAndPositionGetter(item, index) {
-            let gapX = 20; //水平间隔
-            let gapY = 20; //垂直间隔
-            let height = (index % this.col)==2?150:280; //高度
-            let width = (this.width - ((this.col - 1) * gapX)) / this.col;
-            let result = {
-                width: width,
-                height: height,
-                x: (index % this.col) * (width + gapX),
-                y: parseInt(index / this.col) * (height + gapY)
-            };
-            return result;
-        }
-
     },
 };
 </script>
