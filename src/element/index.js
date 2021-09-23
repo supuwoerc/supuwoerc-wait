@@ -35,12 +35,20 @@ import {
     Avatar,
     Empty,
     Tag,
-    Image
+    Image,
+    Badge,
+    RadioGroup,
+    Radio,
+    RadioButton
 } from 'element-ui';
 
 const element = {
     install: function(Vue) {
         Vue.use(Select)
+        Vue.use(RadioGroup)
+        Vue.use(Radio)
+        Vue.use(RadioButton)
+        Vue.use(Badge)
         Vue.use(Header)
         Vue.use(Container)
         Vue.use(Main)

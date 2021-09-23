@@ -3,10 +3,9 @@
 .article-detail-page {
     width: 100%;
     height: 100%;
+    overflow-y: auto;
     .main-box {
         margin: 0 auto;
-        height: 100%;
-        overflow-y: auto;
         display: flex;
         align-items: flex-start;
         justify-content: space-between;
@@ -17,6 +16,7 @@
             align-items: center;
             flex-grow: 0;
             flex-shrink: 0;
+            margin-top: 10px;
             .menu-btn {
                 margin-bottom: 16px;
                 border-radius: 50%;
@@ -49,29 +49,38 @@
         }
         .article-container {
             flex: 1;
-            min-height: 300px;
+            min-height: 200px;
             box-sizing: border-box;
             padding: 0 20px;
-            .domain{
+            .domain {
                 width: 100%;
-                min-height: 300px;
+                min-height: 200px;
                 background: #fff;
                 border-radius: 4px;
-                .top{
+                .top {
                     width: 100%;
                     height: 180px;
                     display: flex;
                     align-items: center;
                     justify-content: space-around;
-                    .cover{
+                    border-bottom: 1px solid #ececec;
+                    .cover {
                         width: 320px;
                         height: 180px;
                         flex-grow: 0;
                         flex-shrink: 0;
                         box-sizing: border-box;
                         padding: 6px;
+                        >>>.image-slot {
+                            height: 100%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            font-size: 32px;
+                        }
                     }
-                    .desc{
+                    .desc {
+                        border-left: 1px solid #ececec;
                         flex: 1;
                         box-sizing: border-box;
                         padding: 22px 12px;
@@ -79,8 +88,7 @@
                         flex-direction: column;
                         align-items: flex-start;
                         justify-content: space-around;
-                        height: 100%;
-                        .title{
+                        .title {
                             font-size: 24px;
                             font-weight: bold;
                             margin-bottom: 10px;
@@ -92,22 +100,32 @@
                             line-clamp: 2;
                             -webkit-box-orient: vertical;
                         }
-                        .auth-info{
+                        .auth-info {
                             font-size: 18px;
-                            i{
+                            i {
                                 font-size: 18px;
-                                color: #333;   
+                                color: #333;
                             }
                         }
-                        .time{
+                        .time {
                             font-size: 16px;
-                            i{
+                            i {
                                 font-size: 18px;
-                                color: #333;   
+                                color: #333;
                             }
                         }
                     }
-
+                    &.no-cover {
+                        height: auto;
+                        .desc {
+                            border: none;
+                        }
+                    }
+                }
+                .content {
+                    overflow: hidden;
+                    box-sizing: border-box;
+                    padding: 0 8px;
                 }
             }
         }
@@ -117,10 +135,10 @@
             flex-shrink: 0;
             background-color: saddlebrown;
             box-sizing: border-box;
-            .card{
+            .card {
                 width: 100%;
                 background: #fff;
-                min-height: 260px;
+                min-height: 180px;
                 border-radius: 4px;
             }
         }

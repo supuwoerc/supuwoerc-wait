@@ -1,10 +1,12 @@
 <template>
-<div class="article-detail-page">
+<div class="article-detail-page scroller-bar ">
     <div class="main-box">
         <div class="menus">
-            <div class="menu-btn">
-                <i class="iconfont icon-like"></i>
-            </div>
+            <el-badge :value="99" class="item" type="primary">
+                <div class="menu-btn">
+                    <i class="iconfont icon-like"></i>
+                </div>
+            </el-badge>
             <div class="menu-btn">
                 <i class="iconfont icon-comment"></i>
             </div>
@@ -14,7 +16,7 @@
         </div>
         <div class="article-container">
             <div class="domain">
-                <div class="top">
+                <div :class="{'top':true,'no-cover':articleDetail.cover_url==''}">
                     <div class="cover" v-show="articleDetail.cover_url!=''">
                         <el-image style="width:100%;height:100%;" :src="$getServerSource(articleDetail.cover_url)">
                             <div slot="error" class="image-slot">
@@ -29,8 +31,8 @@
                             <span>zhangsasadasdsa</span>
                         </div>
                         <div class="time">
-                             <i class="iconfont icon-time-circle"></i>
-                             <span>{{articleDetail.create_time}}</span>
+                            <i class="iconfont icon-time-circle"></i>
+                            <span>{{articleDetail.create_time}}</span>
                         </div>
                     </div>
                 </div>
@@ -38,6 +40,7 @@
                     <markdown :data="articleDetail.content" />
                 </div>
             </div>
+            <comment />
         </div>
         <div class="info">
             <div class="card auth">
@@ -54,6 +57,9 @@ import {
 } from "@/api/api";
 export default {
     name: "articleDetail",
+    components: {
+        comment:()=>import("@/components/common/comment")
+    },
     data: function () {
         return {
             articleDetail: {}

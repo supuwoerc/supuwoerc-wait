@@ -2,7 +2,6 @@
 @import "../../theme/mixin";
 .markdown-file-show-container-parent {
     width: 100%;
-    min-height: 100px;
     box-sizing: border-box;
     .markdown-file-show-container {
         @include background_color(blockColor);
