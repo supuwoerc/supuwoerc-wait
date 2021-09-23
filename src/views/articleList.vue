@@ -8,10 +8,22 @@
             <el-button slot="append" icon="el-icon-search"></el-button>
         </el-input>
         <div class="infinite-list" v-infinite-scroll="loadData" :infinite-scroll-distance="200" :infinite-scroll-disabled="disabled">
-            <div class="list-item" v-for="(item,index) in list" :key="index">
-                <div class="container" :style="{'background-image':`url(${$getServerSource(item.cover_url)})`}">
-                    <div class="title">{{item.title}}</div>
-                    <div class="info">{{item.create_time}}</div>
+            <div class="list-item" v-for="(item,index) in list" :key="index" @click="goDetail(item)" :style="{'background-image':`url(${$getServerSource(item.cover_url)})`}">
+                <div class="container">
+                    <div class="flex">
+                        <div class="title">{{item.title}}</div>
+                        <div class="info">
+                            <span>
+                                <i class="iconfont icon-like"></i>
+                                <span>999</span>
+                            </span>
+                            <span>
+                                <i class="iconfont icon-fire"></i>
+                                <span>999</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="time">{{item.create_time}}</div>
                     <div class="tags">
                         <el-tag theme="dark" v-for="(cell,cindex) in item.tagsList" size="small" :key="cindex">{{cell.tag_name}}</el-tag>
                     </div>
@@ -73,9 +85,15 @@ export default {
                 this.list = this.list.concat(res.data.records);
                 if (res.data.current >= res.data.pages) {
                     this.noMore = true;
-                    this.$message.info("没有更多了!");
+                    this.$message.info("加载完全部数据了!");
                 }
             }
+        },
+        //详情页面
+        goDetail(item){
+            this.$router.push({
+                path:`/articleDetail/${item.id}`
+            })
         },
     },
 };

@@ -42,3 +42,5 @@ export const deleteCoverImg = p => axios_delete(`/article/delete/cover`,p);
 export const saveArticle = p => axios_put("/article/save", p);
 //查询文章列表
 export const getArticleList = p => axios_get(`/article/list`, p);
+//查询文章详情
+export const getArticleDetail = p => axios_get(`/article/detail/${p}`);

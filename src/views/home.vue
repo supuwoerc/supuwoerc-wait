@@ -23,7 +23,9 @@
         </div>
     </div>
     <div class="wow animate__slideInRight" data-wow-duration="1s">
-        <markdown :data="markdown" />
+        <panel>
+            <div class="menu-item">1231</div>
+        </panel>
     </div>
 </div>
 </template>
@@ -32,7 +34,7 @@
 export default {
     name: "home",
     components: {
-        panel:()=>import("@/components/views/panel")
+        panel: () => import("@/components/views/panel")
     },
     data: function () {
         return {
@@ -40,8 +42,7 @@ export default {
             wow: null
         };
     },
-    created() {
-    },
+    created() {},
     mounted() {
         this.initWow();
     },
@@ -57,6 +58,6 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 @import "@/style/views/home.scss";
 </style>

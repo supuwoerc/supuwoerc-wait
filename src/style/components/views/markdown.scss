@@ -4,13 +4,9 @@
     width: 100%;
     min-height: 100px;
     box-sizing: border-box;
-    padding: 6px;
     .markdown-file-show-container {
         @include background_color(blockColor);
-        border-radius: 10px;
         box-sizing: border-box;
-        padding: 20px;
-        @include box_shadow( 0, 2, 4, 0, shadowColor);
         @include font_color(whiteColor);
     }
 }

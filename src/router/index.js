@@ -10,6 +10,7 @@ const login = () => { return import ("@/views/login") };
 const register = () => { return import ("@/views/register") };
 const userInfo = () => { return import ("@/views/userInfo") };
 const articleList = () => { return import ("@/views/articleList") };
+const articleDetail = () => { return import ("@/views/articleDetail") };
 const notFound = () => { return import ("@/views/notFound") };
 
 const originalReplace = Router.prototype.replace;
@@ -66,6 +67,15 @@ export const defaultRouter = [{
     component: articleList,
     meta: {
         pageName: "文章列表",
+        keepAlive: false,
+        role: ['admin','user']
+    },
+}, {
+    path: '/articleDetail/:id',
+    name: 'articleDetail',
+    component: articleDetail,
+    meta: {
+        pageName: "详情",
         keepAlive: false,
         role: ['admin','user']
     },
