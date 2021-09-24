@@ -39,13 +39,15 @@ import {
     Badge,
     RadioGroup,
     Radio,
-    RadioButton
+    RadioButton,
+    Popconfirm
 } from 'element-ui';
 
 const element = {
     install: function(Vue) {
         Vue.use(Select)
         Vue.use(RadioGroup)
+        Vue.use(Popconfirm)
         Vue.use(Radio)
         Vue.use(RadioButton)
         Vue.use(Badge)
