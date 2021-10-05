@@ -2,7 +2,7 @@
 <div class="article-detail-page scroller-bar ">
     <div class="main-box">
         <div class="menus">
-            <el-badge :value="99" class="item" type="primary">
+            <el-badge :value="articleDetail.like_num||0" class="item" type="primary">
                 <div class="menu-btn">
                     <i class="iconfont icon-like"></i>
                 </div>
@@ -28,7 +28,7 @@
                         <div class="title">{{articleDetail.title}}</div>
                         <div class="auth-info">
                             <i class="iconfont icon-smile"></i>
-                            <span>zhangsasadasdsa</span>
+                            <span>{{articleDetail.create_username}}</span>
                         </div>
                         <div class="time">
                             <i class="iconfont icon-time-circle"></i>

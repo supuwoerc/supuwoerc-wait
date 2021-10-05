@@ -18,102 +18,126 @@
             position: relative;
         }
     }
-    .new-comment{
+    .new-comment {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         justify-content: space-between;
-        .edit-input{
+        .edit-input {
             width: 100%;
             padding: 12px 0;
             display: flex;
             align-items: flex-start;
             justify-content: space-between;
-            .el-avatar{
+            .el-avatar {
                 flex-shrink: 0;
                 flex-grow: 0;
             }
-            .el-textarea{
+            .el-textarea {
                 margin-left: 16px;
             }
         }
-        .btn-bar{
+        .btn-bar {
             width: 100%;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            >span{
+            >span {
                 font-size: 14px;
                 margin-right: 10px;
                 color: #666666;
             }
         }
     }
-    .comment-list{
+    .comment-list {
         min-height: 300px;
-        .item-comment{
-            .comment-info{
+        .item-comment {
+            .comment-info {
                 display: flex;
                 align-items: flex-start;
                 justify-content: space-between;
                 padding: 12px 0;
-                .el-avatar{
+                .el-avatar {
                     flex-grow: 0;
                     flex-shrink: 0;
                 }
-                .info{
+                .info {
                     flex: 1;
                     box-sizing: border-box;
                     padding: 0 8px;
-                    .user-name{
+                    .user-name {
                         font-size: 16x;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        .like {
+                            font-size: 14px;
+                            cursor: pointer;
+                            i {
+                                font-size: 16px;
+                            }
+                            &.active {
+                                color: #409eff;
+                                i {
+                                    color: #409eff;
+                                }
+                            }
+                        }
                     }
-                    .content{
+                    .content {
                         font-size: 14px;
                         margin: 4px 0;
                     }
-                    .comment-time{
+                    .comment-time {
                         font-size: 12px;
                         display: flex;
                         align-items: center;
                         justify-content: space-between;
-                        .btns{
+                        .btns {
                             display: flex;
                             align-items: center;
                             justify-content: space-between;
-                            >span{
+                            >span {
                                 display: flex;
                                 align-items: center;
                                 cursor: pointer;
                             }
-                            >span+span{
+                            >span+span {
                                 margin-left: 8px;
                             }
                         }
                     }
-                    .children-comment-list{
+                    .children-comment-list {
                         margin: 8px 0;
                         padding: 8px;
                         background: #f2f2f2;
                         border-radius: 4px;
-                        .list-item{
+                        .list-item {
                             font-size: 14px;
                             display: flex;
                             align-items: center;
                             justify-content: flex-start;
-                            +.list-item{
+                            +.list-item {
                                 margin-top: 6px;
                             }
-                            .separator{
+                            .separator {
                                 margin: 0 4px;
                             }
-                            .user-name{
+                            .user-name {
                                 color: #409eff;
                             }
-                            .btns{
+                            .btns {
+                                display: flex;
+                                align-items: center;
                                 cursor: pointer;
                                 color: #409eff;
                                 margin-left: 10px;
+                                >div {
+                                    margin: 0 4px;
+                                }
+                                >span {
+                                    margin: 0 4px;
+                                }
                             }
                         }
                     }
