@@ -3,8 +3,8 @@
     <div class="main-box">
         <div class="menus">
             <el-badge :value="articleDetail.like_num||0" class="item" type="primary">
-                <div class="menu-btn">
-                    <i class="iconfont icon-like"></i>
+                <div class="menu-btn" @click="setLikeStatus()">
+                    <i :class="{'iconfont':true,'icon-like':!articleDetail.hasLiked,'icon-like-fill':articleDetail.hasLiked}"></i>
                 </div>
             </el-badge>
             <div class="menu-btn">
@@ -53,12 +53,13 @@
 
 <script>
 import {
-    getArticleDetail
+    getArticleDetail,
+    likeOrUnlike
 } from "@/api/api";
 export default {
     name: "articleDetail",
     components: {
-        comment:()=>import("@/components/common/comment")
+        comment: () => import("@/components/common/comment")
     },
     data: function () {
         return {
@@ -77,6 +78,20 @@ export default {
             if (res && res.code == 200) {
                 this.articleDetail = res.data;
             }
+        },
+        //点赞，取消点赞
+        async setLikeStatus() {
+            if (this.articleDetail && this.articleDetail.id) {
+                let params = {
+                    articleId: this.articleDetail.id,
+                    like: this.articleDetail.hasLiked ? -1 : 1
+                }
+                let res = await likeOrUnlike(params);
+                console.log(res);
+            }else{
+                this.$message.info("文章加载中...")
+            }
+
         },
     },
 };

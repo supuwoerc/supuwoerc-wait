@@ -37,10 +37,12 @@ export const deleteTag = p => axios_delete(`/tags/delete`, p);
 //上传文章封面(不会更新文章信息)
 export const uploadCoverImg = p => upload_post(`/article/upload/cover`, p);
 //删除文章封面(不会更新文章信息)
-export const deleteCoverImg = p => axios_delete(`/article/delete/cover`,p);
+export const deleteCoverImg = p => axios_delete(`/article/delete/cover`, p);
 //保存文章(新增或者修改)
 export const saveArticle = p => axios_put("/article/save", p);
 //查询文章列表
 export const getArticleList = p => axios_get(`/article/list`, p);
 //查询文章详情
 export const getArticleDetail = p => axios_get(`/article/detail/${p}`);
+//文章点赞，取消点赞
+export const likeOrUnlike = p => axios_post(`/article/likeOrUnlike`, p);
