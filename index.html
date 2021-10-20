@@ -3,12 +3,71 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title></title>
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>散夜</title>
+  <meta name="description" content='散夜，一个Vue&SpringBoot搭建的博客，记录日常的技术积累'>
+  <meta name="keywords" content="个人博客,supuwoerc,前端,后端,技术,WEB,blog,BLOG,搭建博客,前端技术,VUE博客,散夜的博客">
+  <meta name="anthor" content="散夜,zhangzhouou@gmail.com">
+  <meta name="robots" content="博客,前端,blog,个人博客,Yong,散夜的博客,web,VUE,SpringBoot">
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.9"></script>
 </head>
+<style>
+  .typed-box {
+    width: 100%;
+    padding: 2em 0 0 2em;
+    box-sizing: border-box;
+  }
+
+  .typed-loading {
+    margin: 0 auto;
+  }
+</style>
 
 <body>
-<div id="app">
-</div>
+  <div id="app">
+    <div class="typed-box" id='typedLoading'>
+      <span class="typed-loading">
+      </span>
+    </div>
+  </div>
+  <script>
+    var commands = [
+      '<strong>🤒贫穷的服务器带宽：Poor server...</strong>',
+      '<strong>😀加载资源文件：Get build resources...</strong>',
+      '<strong>😃链接资源：Connect to the server...</strong>',
+      '<strong>🙃要加载的东西真不少：Many things to load...</strong>',
+      '<strong>🐒Nginx服务分发资源：./nginx -s reload...</strong>',
+      '<strong>🧭分析客户端数据：Analyze client data...</strong>',
+      '<strong>🍾制造一些奇妙：Make some wonder...</strong>',
+      '<strong>🐛绕开这些奇怪的Bug：Make some wonder...</strong>',
+      '<strong>🐌怎么还没加载完：Why havent wan loaded yet...</strong>',
+      '<strong>😵‍💫我重新来一次试试：I will try again...</strong>^3600',
+    ];
+    var dom = document.getElementById("typedLoading");
+    if (dom) {
+      var typed = new Typed(".typed-loading", {
+        strings: commands,
+        typeSpeed: 10,
+        backSpeed: 0,
+        smartBackspace: false,
+        loop: true
+      });
+    }
+  </script>
 </body>
+<script>
+  (function () {
+    var lastTouchEnd = 0;
+    document.addEventListener('touchend', function (event) {
+      var now = (new Date()).getTime();
+      if (now - lastTouchEnd <= 300) {
+        event.preventDefault();
+      }
+      lastTouchEnd = now;
+    }, false);
+  }());
+</script>
+
 </html>

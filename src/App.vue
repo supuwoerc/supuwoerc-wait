@@ -51,12 +51,20 @@ export default {
 
     },
     mounted() {
+        this.removeLoading();
         this.initThemeMode();
     },
     methods: {
         //初始化页面模式
         initThemeMode() {
             this.$store.commit("setThemeMode", this.$store.getters.getThemeMode);
+        },
+        //取消loading
+        removeLoading() {
+            let loading = document.getElementById("typedLoading");
+            if (loading) {
+                loading.remove();
+            }
         }
     },
 };
