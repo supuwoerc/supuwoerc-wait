@@ -27,7 +27,6 @@
             <div class="menu-item">1231</div>
         </panel>
     </div>
-    <loopMenu/>
 </div>
 </template>
 
@@ -36,7 +35,6 @@ export default {
     name: "home",
     components: {
         panel: () => import("@/components/views/panel"),
-        loopMenu: () => import("@/components/common/loopMenu"),
     },
     data: function () {
         return {

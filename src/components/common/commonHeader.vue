@@ -8,19 +8,7 @@
     </div>
     <div class="right">
         <div class="navbar">
-            <el-menu :default-active="navActiveIndex" :router="true" class="el-menu-demo" mode="horizontal" background-color="#ffffff" text-color="#333333" :active-text-color="$store.getters.getThemeColor">
-                <template v-for="(item, index) in $store.getters.getNavigation">
-                    <el-menu-item v-if="item && item.children && item.children.length == 0" :key="index" :index="item.path">
-                        {{ item.name }}
-                    </el-menu-item>
-                    <el-submenu :index="item.path" v-else :key="index">
-                        <template slot="title">{{ item.name }}</template>
-                        <el-menu-item :index="cell.path" :key="cindex" v-for="(cell, cindex) in item.children">
-                            {{ cell.name }}
-                        </el-menu-item>
-                    </el-submenu>
-                </template>
-            </el-menu>
+            <loop-menu></loop-menu>
         </div>
         <div class="setting">
             <i class="el-icon-setting" @click="setting()"></i>
@@ -47,6 +35,7 @@ export default {
     name: "commonHeader",
     components: {
         themeColorSelector,
+        loopMenu: () => import('@/components/common/loopMenu')
     },
     data: function () {
         return {
