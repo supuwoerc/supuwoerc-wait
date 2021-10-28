@@ -4,7 +4,7 @@
         <panel>
             <div class="login-form">
                 <div class="title">用户登录</div>
-                <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="70px" class="demo-ruleForm">
+                <el-form @keyup.enter.native="submitForm" :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="70px" class="demo-ruleForm">
                     <el-form-item label="账号" prop="username">
                         <el-input type="text" v-model="ruleForm.username" autocomplete="true"></el-input>
                     </el-form-item>
