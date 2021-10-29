@@ -4,7 +4,6 @@
     width: 100%;
     box-sizing: border-box;
     .markdown-file-show-container {
-        @include background_color(blackColor);
         box-sizing: border-box;
         @include font_color(whiteColor);
     }

@@ -1,63 +1,77 @@
-.back-blank{
+.back-blank {
     background: #ffffff;
 }
+
 .back-young {
     background: linear-gradient(225deg, #725be2 40%, #218bee);
 }
+
 .font-young {
     background: linear-gradient(225deg, #725be2 40%, #218bee);
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
 }
+
 .back-tip {
     background: linear-gradient(150deg, #218bee 40%, #8600ff 60%);
 }
+
 .font-tip {
     background: linear-gradient(150deg, #218bee 40%, #8600ff 60%);
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
 }
+
 .back-shy {
     background: linear-gradient(225deg, #ff92f4 40%, #51e1fc);
 }
+
 .font-shy {
     background: linear-gradient(225deg, #ff92f4 40%, #51e1fc);
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
 }
+
 .back-fun {
     background: linear-gradient(225deg, #fcaac9 40%, #fb79d1);
 }
+
 .font-fun {
     background: linear-gradient(225deg, #fcaac9 40%, #fb79d1);
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
 }
+
 .back-warm {
     background: linear-gradient(225deg, #F195FF 40%, #9852EF);
 }
+
 .font-warm {
     background: linear-gradient(225deg, #F195FF 40%, #4d3a64);
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
 }
+
 .back-cool {
     background: linear-gradient(225deg, #6BEFFF 40%, #3E92F0);
 }
+
 .font-cool {
     background: linear-gradient(225deg, #6BEFFF 40%, #3E92F0);
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
 }
+
 .back-black {
     background: linear-gradient(180deg, #01002F 40%, #17064F);
 }
+
 .font-black {
     background: linear-gradient(180deg, #01002F 40%, #17064F);
     background-clip: text;
@@ -65,3 +79,6 @@
     color: transparent;
 }
 
+.transiton-lineG {
+    transition: all .4s cubic-bezier(.175, .885, .32, 1.275);
+}

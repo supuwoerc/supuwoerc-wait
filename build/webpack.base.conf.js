@@ -12,14 +12,14 @@ function resolve(dir) {
 module.exports = {
     context: path.resolve(__dirname, '../'),
     entry: {
-        app: './src/main.js',  
+        app: './src/main.js',
     },
     plugins: [
         //非生产环境开启调试
-        // new vConsolePlugin({
-        //     filter: [],
-        //     enable: process.env.NODE_ENV != 'production'
-        // })
+        new vConsolePlugin({
+            filter: [],
+            enable: process.env.NODE_ENV != 'production'
+        }),
     ],
     output: {
         path: config.build.assetsRoot,
@@ -37,39 +37,50 @@ module.exports = {
     },
     module: {
         rules: [{
-            test: /\.vue$/,
-            loader: 'vue-loader',
-            options: vueLoaderConfig
-        },
-        {
-            test: /\.js$/,
-            loader: 'babel-loader',
-            include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
-        },
-        {
-            test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-            loader: 'url-loader',
-            options: {
-                limit: 10000,
-                name: utils.assetsPath('img/[name].[hash:7].[ext]')
+                test: /\.vue$/,
+                loader: 'vue-loader',
+                options: vueLoaderConfig
+            },
+            {
+                test: /\.md$/,
+                use: [{
+                        loader: 'html-loader'
+                    },
+                    {
+                        loader: 'markdown-loader',
+                        options: {}
+                    }
+                ]
+            },
+            {
+                test: /\.js$/,
+                loader: 'babel-loader',
+                include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
+            },
+            {
+                test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+                loader: 'url-loader',
+                options: {
+                    limit: 10000,
+                    name: utils.assetsPath('img/[name].[hash:7].[ext]')
+                }
+            },
+            {
+                test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
+                loader: 'url-loader',
+                options: {
+                    limit: 10000,
+                    name: utils.assetsPath('media/[name].[hash:7].[ext]')
+                }
+            },
+            {
+                test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+                loader: 'url-loader',
+                options: {
+                    limit: 10000,
+                    name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
+                }
             }
-        },
-        {
-            test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
-            loader: 'url-loader',
-            options: {
-                limit: 10000,
-                name: utils.assetsPath('media/[name].[hash:7].[ext]')
-            }
-        },
-        {
-            test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-            loader: 'url-loader',
-            options: {
-                limit: 10000,
-                name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
-            }
-        }
         ]
     },
     node: {

@@ -84,7 +84,6 @@ export function axios_get(url, params) {
         }
     )
 }
-
 export function axios_post(url, data, header = {}) {
     return new Promise(
         (resolve, reject) => {
@@ -110,7 +109,6 @@ export function upload_post(url, data) {
         }
     )
 }
-
 export function axios_put(url, data, header = {}) {
     return new Promise(
         (resolve, reject) => {
@@ -124,7 +122,6 @@ export function axios_put(url, data, header = {}) {
         }
     )
 }
-
 export function axios_delete(url, data) {
     return new Promise(
         (resolve, reject) => {

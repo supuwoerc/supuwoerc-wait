@@ -2,62 +2,17 @@
 <div class="home-page">
     <div class="carousel-page-content">
         <div class="grid-menu">
-            <div class="wow animate__zoomIn" data-wow-duration="1s">
+            <div class="wow animate__zoomIn" data-wow-duration="1s" v-for="(item,index) in cards" :key="index">
                 <panel>
-                    <div class="menu-item">
-                        <div class="image-box animate__animated animate__zoomIn">
-                            <img src="../assets/mimic/a1.png" alt="" srcset="">
-                        </div>
-                        <div class="desc-box">
-                            <div class="menu-title font-young animate__animated animate__slideInRight">SUPUWOERC</div>
-                            <div class="menu-desc font-young animate__animated animate__slideInRight">关于散夜（站点）</div>
-                        </div>
-                    </div>
-                </panel>
-            </div>
-            <div class="wow animate__zoomIn" data-wow-duration="1s">
-                <panel>
-                    <div class="menu-item">
-                        <div class="image-box animate__animated animate__zoomIn">
-                            <img src="../assets/mimic/a4.png" alt="" srcset="">
-                        </div>
-                        <div class="desc-box">
-                            <div class="menu-title font-young animate__animated animate__slideInRight">FRONT-END</div>
-                            <div class="menu-desc font-young animate__animated animate__slideInRight">点击查看前端相关</div>
-                        </div>
-                    </div>
-                </panel>
-            </div>
-            <div class="wow animate__zoomIn" data-wow-duration="1s">
-                <panel>
-                    <div class="menu-item">
-                        <div class="image-box animate__animated animate__zoomIn">
-                            <img src="../assets/mimic/a22.png" alt="" srcset="">
-                        </div>
-                        <div class="desc-box">
-                            <div class="menu-title font-young animate__animated animate__slideInRight">BACK-END</div>
-                            <div class="menu-desc font-young animate__animated animate__slideInRight">点击查看后端相关</div>
-                        </div>
-                    </div>
-                </panel>
-            </div>
-            <div class="wow animate__zoomIn" data-wow-duration="1s">
-                <panel>
-                    <div class="menu-item">
-                        <div class="image-box animate__animated animate__zoomIn">
-                            <img src="../assets/mimic/a24.png" alt="" srcset="">
-                        </div>
-                        <div class="desc-box">
-                            <div class="menu-title font-young animate__animated animate__slideInRight">ARDUINO</div>
-                            <div class="menu-desc font-young animate__animated animate__slideInRight">点击查看硬件相关</div>
-                        </div>
-                    </div>
+                    <cardLeft2Right :info="item" />
                 </panel>
             </div>
         </div>
-        <div class="wow animate__flipInX" data-wow-duration="1s">
+        <div class="wow animate__backInUp" data-wow-duration="1s">
             <panel>
-                <div class="menu-item">1231</div>
+                <div class="readme-md">
+                    <markdown :data="markdown" />
+                </div>
             </panel>
         </div>
     </div>
@@ -65,28 +20,42 @@
 </template>
 
 <script>
+
 export default {
     name: "home",
     components: {
         panel: () => import("@/components/views/panel"),
+        cardLeft2Right: () => import("@/components/views/home/cardLeft2Right")
     },
     data: function () {
         return {
-            markdown: "## 测试markdown组件",
+            markdown: require('../../static/me.md'), //坑：https://blog.csdn.net/wzp20092009/article/details/119614359
             wow: null,
-            carousels: [{
-                desc: "",
-                img: require("../assets/cover/a1.png")
+            cards: [{
+                cover: require('@/assets/mimic/a1.png'),
+                name: "SUPUWOERC",
+                content: "Harlek's Incantation of Incineration!",
+                class: "back-young"
             }, {
-                desc: "",
-                img: require("../assets/cover/a2.jpg")
+                cover: require('@/assets/mimic/a4.png'),
+                name: "FRONT-END",
+                content: "日常Codeing的一些技巧和遇到过的问题总结,包含框架搭建,通用方法封装,性能优化",
+                class: "back-shy"
             }, {
-                desc: "",
-                img: require("../assets/cover/a3.jpg")
+                cover: require('@/assets/mimic/a25.png'),
+                name: "BACK-END",
+                content: "学习后端的笔记和遇到过的问题&服务器相关的知识&Java&SSM&Nginx&Redis",
+                class: "back-cool"
+            }, {
+                cover: require('@/assets/mimic/a24.png'),
+                name: "ARDUINO",
+                content: "用大学的C语言和C++玩耍Arduino的日常,也算半入门物联网（逃）",
+                class: "back-warm"
             }]
         };
     },
-    created() {},
+    created() {
+    },
     mounted() {
         this.initWow();
     },
