@@ -1,20 +1,18 @@
 <template>
-<div class="home-page">
-    <div class="carousel-page-content scroller-bar">
-        <div class="grid-menu">
-            <div class="wow animate__zoomIn" data-wow-duration="1s" v-for="(item,index) in cards" :key="index">
-                <panel>
-                    <cardLeft2Right :info="item" />
-                </panel>
-            </div>
-        </div>
-        <div class="wow animate__lightSpeedInRight" data-wow-duration="1s">
+<div class="home-page scroller-bar">
+    <div class="grid-menu">
+        <div class="wow animate__zoomIn" data-wow-duration="1s" v-for="(item,index) in cards" :key="index">
             <panel>
-                <div class="readme-md">
-                    <markdown :data="markdown" />
-                </div>
+                <cardLeft2Right :info="item" />
             </panel>
         </div>
+    </div>
+    <div class="wow animate__lightSpeedInRight" data-wow-duration="1s">
+        <panel>
+            <div class="readme-md">
+                <markdown :data="markdown" />
+            </div>
+        </panel>
     </div>
 </div>
 </template>
@@ -63,7 +61,7 @@ export default {
     methods: {
         initWow() {
             this.wow = new this.$wow.WOW({
-                scrollContainer: ".carousel-page-content",
+                scrollContainer: ".home-page",
                 live: true,
                 mobile: true
             }).init();
