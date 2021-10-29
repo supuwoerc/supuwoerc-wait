@@ -17,7 +17,12 @@
 @function themed($key) {
     @return map-get($theme-map, $key);
 }
-
+//获取背景
+@mixin background($color) {
+    @include themeify {
+        background: themed($color) !important;
+    }
+}
 //获取背景颜色
 @mixin background_color($color) {
     @include themeify {

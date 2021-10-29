@@ -40,7 +40,7 @@ import {
     RadioGroup,
     Radio,
     RadioButton,
-    Popconfirm
+    Popconfirm,
 } from 'element-ui';
 
 const element = {

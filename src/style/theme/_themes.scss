@@ -1,1 +1,16 @@
-$themes: ( light: ( whiteColor:#0d1117, blockColor:#ffffff, bodyBg:"./assets/images/random.jpeg", shadowColor:rgba(10, 16, 20, 0.4)), dark: ( whiteColor:#ffffff, blockColor:#0d1117, bodyBg:"./assets/images/random2.jpeg", shadowColor:rgba(54, 104, 104, 1)));
+$themes: (
+    light: (
+        whiteColor: #0d1117,
+        lineGblackColor: linear-gradient(360deg, rgba(255,255,255,.9) 10%, #ffffff),
+        blackColor: #ffffff,
+        bodyBg: "./assets/images/random.jpeg",
+        shadowColor: rgba(10, 16, 20, 0.4),
+    ),
+    dark: (
+        whiteColor: #ffffff,
+        lineGblackColor: linear-gradient(180deg, #01002f 40%, #17064f),
+        blackColor: #0d1117,
+        bodyBg: "./assets/images/random2.jpeg",
+        shadowColor: rgba(54, 104, 104, 1),
+    ),
+);

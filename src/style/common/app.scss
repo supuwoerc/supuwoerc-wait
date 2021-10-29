@@ -38,6 +38,13 @@ html {
             height: 100%;
         }
     }
+    .el-menu--popup{
+        min-width: 100px;
+        padding: 0;
+    }
+    .el-submenu .el-menu-item{
+        min-width: 100px;
+    }
     /*修改滚动条样式*/
     .scroller-bar {
         &::-webkit-scrollbar {

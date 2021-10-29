@@ -17,7 +17,7 @@
     <!-- 设置dialog -->
     <el-dialog title="设置" :visible.sync="dialogFormVisible" :width="dialogWidth" :custom-class="'theme-dialog'">
         <el-form>
-            <el-form-item label="暗黑模式" :label-width="formLabelWidth">
+            <el-form-item label="暗黑模式(.beta)" :label-width="formLabelWidth">
                 <el-switch :value="$store.getters.getThemeMode=='dark'" @change="changeMode" active-color="#000000" :inactive-color="this.$store.getters.getThemeColor">
                 </el-switch>
             </el-form-item>
@@ -41,7 +41,7 @@ export default {
         return {
             dialogVisible: false,
             dialogFormVisible: false,
-            formLabelWidth: "80px",
+            formLabelWidth: "120px",
             form: {},
             visible: true,
             dialogWidth: "80%", //移动端的宽度   打开会判断分辨率修改

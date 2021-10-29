@@ -3,11 +3,12 @@
 .panel-component {
     width: 100%;
     height: 100%;
-    @include background_color(blockColor);
+    @include background(lineGblackColor);
     &.shadow {
         @include box_shadow( 0, 2, 4, 0, shadowColor);
     }
     &.radius {
         border-radius: 10px;
+        overflow: hidden;
     }
 }
