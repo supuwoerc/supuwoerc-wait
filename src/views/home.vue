@@ -5,25 +5,53 @@
             <div class="wow animate__zoomIn" data-wow-duration="1s">
                 <panel>
                     <div class="menu-item">
-                        <img src="../assets/mimic/back31.png" alt="" srcset="">
-                        <div class="menu-title font-young">SUPUWOERC 散夜</div>
-                        <div class="menu-desc font-young">关于</div>
+                        <div class="image-box animate__animated animate__zoomIn">
+                            <img src="../assets/mimic/a1.png" alt="" srcset="">
+                        </div>
+                        <div class="desc-box">
+                            <div class="menu-title font-young animate__animated animate__slideInRight">SUPUWOERC</div>
+                            <div class="menu-desc font-young animate__animated animate__slideInRight">关于散夜（站点）</div>
+                        </div>
                     </div>
                 </panel>
             </div>
             <div class="wow animate__zoomIn" data-wow-duration="1s">
                 <panel>
-                    <div class="menu-item"></div>
+                    <div class="menu-item">
+                        <div class="image-box animate__animated animate__zoomIn">
+                            <img src="../assets/mimic/a4.png" alt="" srcset="">
+                        </div>
+                        <div class="desc-box">
+                            <div class="menu-title font-young animate__animated animate__slideInRight">FRONT-END</div>
+                            <div class="menu-desc font-young animate__animated animate__slideInRight">点击查看前端相关</div>
+                        </div>
+                    </div>
                 </panel>
             </div>
             <div class="wow animate__zoomIn" data-wow-duration="1s">
                 <panel>
-                    <div class="menu-item"></div>
+                    <div class="menu-item">
+                        <div class="image-box animate__animated animate__zoomIn">
+                            <img src="../assets/mimic/a22.png" alt="" srcset="">
+                        </div>
+                        <div class="desc-box">
+                            <div class="menu-title font-young animate__animated animate__slideInRight">BACK-END</div>
+                            <div class="menu-desc font-young animate__animated animate__slideInRight">点击查看后端相关</div>
+                        </div>
+                    </div>
                 </panel>
             </div>
             <div class="wow animate__zoomIn" data-wow-duration="1s">
                 <panel>
-                    <div class="menu-item"></div>
+                    <div class="menu-item">
+                        <div class="image-box animate__animated animate__zoomIn">
+                            <img src="../assets/mimic/a24.png" alt="" srcset="">
+                        </div>
+                        <div class="desc-box">
+                            <div class="menu-title font-young animate__animated animate__slideInRight">ARDUINO</div>
+                            <div class="menu-desc font-young animate__animated animate__slideInRight">点击查看硬件相关</div>
+                        </div>
+                    </div>
                 </panel>
             </div>
         </div>
