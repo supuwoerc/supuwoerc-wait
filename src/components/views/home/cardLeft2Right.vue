@@ -4,10 +4,10 @@
         <img :src="info.cover" alt="" srcset="" />
     </div>
     <div class="desc-box">
-        <div class="menu-title line-ell animate__animated animate__slideInRight">
+        <div class="menu-title line-ell animate__animated animate__slideInDown">
             {{info.name}}
         </div>
-        <div v-if="info.content" class="line3-ell menu-desc animate__animated animate__slideInRight">
+        <div class="line3-ell menu-desc animate__animated animate__slideInDown">
             {{info.content}}
         </div>
     </div>
@@ -50,7 +50,7 @@ export default {
     mounted() {},
     methods: {
         cardClickHandler() {
-            this.$emit("cardClick",info);
+            this.$emit("cardClick",this.info);
         },
     },
 };
