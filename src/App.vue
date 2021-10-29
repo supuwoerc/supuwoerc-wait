@@ -58,6 +58,7 @@ export default {
         //初始化页面模式
         initThemeMode() {
             this.$store.commit("setThemeMode", this.$store.getters.getThemeMode);
+            this.$message.success(this.$store.getters.getThemeMode=='dark'?'启动暗黑模式':'启动日间模式')
         },
         //取消loading
         removeLoading() {

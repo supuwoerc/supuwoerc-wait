@@ -1,6 +1,6 @@
 <template>
 <div class="home-page">
-    <div class="carousel-page-content">
+    <div class="carousel-page-content scroller-bar">
         <div class="grid-menu">
             <div class="wow animate__zoomIn" data-wow-duration="1s" v-for="(item,index) in cards" :key="index">
                 <panel>
@@ -8,7 +8,7 @@
                 </panel>
             </div>
         </div>
-        <div class="wow animate__backInUp" data-wow-duration="1s">
+        <div class="wow animate__lightSpeedInRight" data-wow-duration="1s">
             <panel>
                 <div class="readme-md">
                     <markdown :data="markdown" />
@@ -20,7 +20,6 @@
 </template>
 
 <script>
-
 export default {
     name: "home",
     components: {
@@ -54,10 +53,11 @@ export default {
             }]
         };
     },
-    created() {
-    },
+    created() {},
     mounted() {
-        this.initWow();
+        this.$nextTick(() => {
+            this.initWow();
+        })
     },
     beforeDestroy() {},
     methods: {

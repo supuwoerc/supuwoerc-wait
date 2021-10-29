@@ -10,7 +10,7 @@ export default new Vuex.Store({
     state: {
         ...permission.state,
         themeColor: localStorage.getItem('themeColor') || "#409EFF", //element主题
-        themeMode: localStorage.getItem('themeMode') || "light", //暗黑模式
+        themeMode: localStorage.getItem('themeMode') || "dark", //默认暗黑模式
     },
     /**
      * 操作数据，唯一的通道是mutations
