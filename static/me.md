@@ -1,24 +1,24 @@
 # Welcome to 散夜！
 ---
 #### INFO
-* 个人用Vue&SpringBoot&Redis&Mysql&Nginx完成的Wiki向的Blog。
-* 支持离线Pwa，暗黑模式。
-* 部分图片采用jsdelivr做cdn加速服务。
+* 用Vue，SpringBoot，Redis，Mysql，Nginx完成的Wiki向的Blog。
+* 支持离线Pwa，暗黑模式(beta)。
+* 部分图片和资源采用jsdelivr做cdn加速服务，命中率得看运气。
 * 网站部署在腾讯云1Mbps带宽的Centos7丐中丐服务器上，内存和带宽长期处于跑满状态，访问速度是一个玄学问题。
 
 #### ABOUT
-* 💥：九八年，家乡**安徽滁州**，现漂流**魔都上海**。
-* 💻：一九年，接触并开始**前端开发**工作，遵循**极简主义**，参与了诸多***jQuery&Angular&Vue&React***项目的**Bug**研发。
-* ⛳：二零年初自学**Java**,迫于当时**搬瓦工**极其不稳定，转战[码云](https://gitee.com/zhangqimeng)一段时间。
-* 👫：二零年底和媳妇扯了证。
-* 🚴：二一年开始每天自行车通勤控制体重，避免成为一个肥仔。
+* 💥：九八年，家乡**安徽滁州**，现漂流**魔都上海**~
+* 💻：一九年，接触并开始**前端开发**工作，遵循**极简主义**，参与了诸多***jQuery&Angular&Vue&React***项目的**Bug**研发~
+* ⛳：二零年初自学**Java**,迫于当时**搬瓦工**极其不稳定，转战[码云](https://gitee.com/zhangqimeng)一段时间~
+* 👫：二零年底结婚了~
+* 🚴：二一年开始每天自行车通勤控制体重，避免成为一个肥仔~
 * ⏰：二一年底媳妇准备中级会计的考试，每天下了班一起**学习**~~。
 
 #### TODO
 - [x] 🚀：~~二零年底开始做些日常的***JavaWeb***开发。~~
 - [x] 🚀：~~入门***Arduino***~~
 - [x] 🚀：~~入门***Threejs***~~
-- [ ] 🚀：自己做一个***Web***可视化编辑器
+- [ ] 🚀：自己做一个***Web***可视化编辑器:[visualDesigner](https://gitee.com/zhangqimeng/visual-designer)
 - [ ] 🚀：将博客部分功能迁移到***React***构建的程序中
 - [ ] 🚀：入门***Blender***
 - [ ] 🚀：入门***Flutter***
@@ -45,3 +45,6 @@
 #### GAMES
 * ![](https://img.shields.io/badge/Steam-171a21?style=flat-square&logo=steam&logoColor=ffffff)
 
+#### LINK
+
+* 谷歌邮箱:[GoogleMail](mailto:zhangzhouou@gmail.com)
