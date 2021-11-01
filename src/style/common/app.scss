@@ -45,6 +45,9 @@ html {
     .el-submenu .el-menu-item {
         min-width: 100px;
     }
+    .el-loading-mask{
+        background: transparent;
+    }
     /*修改滚动条样式*/
     .scroller-bar {
         &::-webkit-scrollbar {

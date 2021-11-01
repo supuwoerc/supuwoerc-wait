@@ -16,7 +16,7 @@
         </el-empty>
         <div v-else class="article-list">
             <div class="list-item" v-for="(item,index) in list" :key="index">
-                <span class="item-title" @click="openDetail(item)">{{item.title}}</span>
+                <span class="item-title transiton-lineG" @click="openDetail(item)">{{item.title}}</span>
                 <span class="update-time">{{dateFormat(item.update_time,"YYYY-MM-DD")}}</span>
             </div>
         </div>

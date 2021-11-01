@@ -51,11 +51,15 @@
                     display: flex;
                     align-items: center;
                     justify-content: space-between;
+                    line-height: 26px;
                     .update-time {
                         width: 100px;
                         flex-shrink: 0;
                         flex-grow: 0;
                         text-align: right;
+                        font-size: 16px;
+                        font-weight: bold;
+                        @include font_color(whiteColor);
                     }
                     .item-title {
                         flex: 1;
@@ -68,9 +72,9 @@
                         white-space: nowrap;
                         position: relative;
                         cursor: pointer;
-                        &:hover{
-                            color: #409eff;
-                        }
+                        font-size: 16px;
+                        @include font_color(whiteColor);
+                        font-weight: bold;
                         &::before{
                             content: " ";
                             position: absolute;
@@ -79,8 +83,14 @@
                             border-radius: 50%;
                             top: 50%;
                             left: 0;
+                            font-weight: bold;
                             transform: translateY(-50%);
-                            @include background_color(whiteColor);
+                            @include background(whiteColor);
+                        }
+                    }
+                    &:hover{
+                        .item-title{
+                            font-size: 18px;
                         }
                     }
                 }
