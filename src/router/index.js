@@ -1,17 +1,18 @@
 import Vue from 'vue'
 import Router from 'vue-router';
 import store from "../store/store";
+import NProgress from 'nprogress'
 import { Message } from "element-ui";
 Vue.use(Router)
-const home = () => { return import ("@/views/home") };
-const manage = () => { return import ("@/views/manage") };
-const newArticle = () => { return import ("@/views/newArticle") };
-const login = () => { return import ("@/views/login") };
-const register = () => { return import ("@/views/register") };
-const userInfo = () => { return import ("@/views/userInfo") };
-const articleList = () => { return import ("@/views/articleList") };
-const articleDetail = () => { return import ("@/views/articleDetail") };
-const notFound = () => { return import ("@/views/notFound") };
+const home = () => { return import("@/views/home") };
+const manage = () => { return import("@/views/manage") };
+const newArticle = () => { return import("@/views/newArticle") };
+const login = () => { return import("@/views/login") };
+const register = () => { return import("@/views/register") };
+const userInfo = () => { return import("@/views/userInfo") };
+const articleList = () => { return import("@/views/articleList") };
+const articleDetail = () => { return import("@/views/articleDetail") };
+const notFound = () => { return import("@/views/notFound") };
 
 const originalReplace = Router.prototype.replace;
 const originalPush = Router.prototype.push;
@@ -59,7 +60,7 @@ export const defaultRouter = [{
     meta: {
         pageName: "编辑",
         keepAlive: false,
-        role: ['admin','user']
+        role: ['admin', 'user']
     },
 }, {
     path: '/articleList',
@@ -68,7 +69,7 @@ export const defaultRouter = [{
     meta: {
         pageName: "文章列表",
         keepAlive: false,
-        role: ['admin','user']
+        role: ['admin', 'user']
     },
 }, {
     path: '/articleDetail/:id',
@@ -77,7 +78,7 @@ export const defaultRouter = [{
     meta: {
         pageName: "详情",
         keepAlive: false,
-        role: ['admin','user']
+        role: ['admin', 'user']
     },
 }, {
     path: "*",
@@ -114,7 +115,9 @@ export function resetRouter() {
 /**
  * 添加全局的路由守卫
  */
-router.beforeEach(async(to, from, next) => {
+router.beforeEach(async (to, from, next) => {
+    // 每次切换页面时，调用进度条
+    NProgress.start();
     if (to.path == '/login' && store.state.loginStatus) {
         Message.error("请先注销此次登录");
         next('/');
@@ -123,10 +126,14 @@ router.beforeEach(async(to, from, next) => {
     //动态添加权限路由
     if (store.state.loginStatus && !store.getters.getHasGetPermissionRoutes) {
         await store.dispatch("getRoleRouter");
-        next({...to, replace: true });
+        next({ ...to, replace: true });
     } else {
         next();
     }
 
+})
+router.afterEach(() => {
+    // 在即将进入新的页面组件前，关闭掉进度条
+    NProgress.done()
 })
 export default router;

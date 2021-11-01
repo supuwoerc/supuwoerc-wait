@@ -21,6 +21,16 @@ directives(Vue);
 //注册全局组件
 import global from "@/global/global";
 global(Vue);
+//进度条
+import NProgress from 'nprogress';
+import 'nprogress/nprogress.css';
+NProgress.configure({
+    easing: 'linear',  // 动画方式
+    speed: 50,  // 递增进度条的速度
+    showSpinner: false, // 是否显示加载ico
+    trickleSpeed: 50, // 自动递增间隔
+    minimum: 0.1 // 初始化时的最小百分比
+})
 /**
  * 注入element相关全局组件
  */
